@@ -26,7 +26,7 @@ const countries = all.map((f: any) => ({
 }));
 const hubs = markets.hubs.map((h) => {
   const [x, y] = projection([h.lon, h.lat])!;
-  return { x, y };
+  return { x, y, remote: 'remote' in h && !!h.remote };
 });
 ---
 <svg viewBox={`0 0 ${W} ${H}`} class={`map-backdrop pointer-events-none select-none ${className}`} aria-hidden="true">
@@ -37,7 +37,13 @@ const hubs = markets.hubs.map((h) => {
       fill-opacity={c.state === 'idle' ? 0.06 : 0.32}
     />
   ))}
-  {hubs.map((h) => <circle cx={h.x} cy={h.y} r="5" fill="var(--accent)" fill-opacity="0.7" />)}
+  {hubs.map((h) =>
+    h.remote ? (
+      <circle cx={h.x} cy={h.y} r="7" fill="none" stroke="var(--accent)" stroke-opacity="0.8" stroke-width="2" />
+    ) : (
+      <circle cx={h.x} cy={h.y} r="5" fill="var(--accent)" fill-opacity="0.7" />
+    ),
+  )}
 </svg>
 
 <style>

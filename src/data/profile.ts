@@ -73,18 +73,22 @@ export const experience = [
 export const markets = {
   regions: [
     { name: 'Home base', countries: ['Germany'] },
-    { name: 'Asia Pacific', countries: ['Thailand', 'Malaysia'] }, // TODO: confirm APAC markets
+    { name: 'Asia Pacific', countries: ['Thailand', 'Malaysia'] }, // TODO: confirm Malaysia
     { name: 'East Asia', countries: ['Japan', 'South Korea', 'Taiwan'] },
     { name: 'Australia', countries: ['Australia'] },
-    { name: 'Middle East', countries: ['United Arab Emirates', 'Saudi Arabia', 'Qatar', 'Kuwait', 'Oman'] },
-    { name: 'Latin America', countries: ['Brazil', 'Mexico', 'Chile', 'Colombia', 'Peru', 'Argentina'] }, // TODO: confirm
+    // Porsche Middle East & Africa: UAE plus (almost) all of Africa
+    { name: 'Middle East & Africa', countries: ["United Arab Emirates", "Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", "Burundi", "Cameroon", "Central African Rep.", "Chad", "Congo", "Côte d'Ivoire", "Dem. Rep. Congo", "Djibouti", "Egypt", "Eq. Guinea", "Eritrea", "Ethiopia", "Gabon", "Gambia", "Ghana", "Guinea", "Guinea-Bissau", "Kenya", "Lesotho", "Liberia", "Libya", "Madagascar", "Malawi", "Mali", "Mauritania", "Morocco", "Mozambique", "Namibia", "Niger", "Nigeria", "Rwanda", "S. Sudan", "Senegal", "Sierra Leone", "Somalia", "Somaliland", "South Africa", "Sudan", "Tanzania", "Togo", "Tunisia", "Uganda", "W. Sahara", "Zambia", "Zimbabwe", "eSwatini"] },
+    { name: 'Latin America', countries: ['Brazil', 'Chile', 'Colombia', 'Peru', 'Argentina'] },
     { name: 'Iberia', countries: ['Spain', 'Portugal'] },
   ],
+  // Dots = places I worked on site (markets I only worked with remotely are just highlighted)
   hubs: [
     { name: 'Stuttgart', note: 'Porsche AG HQ', lon: 9.18, lat: 48.78 },
     { name: 'Singapore', note: 'Porsche Asia Pacific regional office', lon: 103.82, lat: 1.35 },
-    { name: 'Bahrain', note: 'Porsche Middle East', lon: 50.56, lat: 26.07 },
     { name: 'Melbourne', note: 'Porsche Cars Australia', lon: 144.96, lat: -37.81 },
+    { name: 'Bangkok', note: 'Porsche Thailand', lon: 100.5, lat: 13.76 },
+    // remote: market too small to see on the map, shown as a hollow ring (no on-site work)
+    { name: 'Dubai', note: 'Porsche Middle East', lon: 55.27, lat: 25.2, remote: true },
   ],
 };
 
@@ -161,6 +165,7 @@ export const workGallery = [
   { src: '/images/work/porsche-centre.jpg', caption: 'Porsche Studio Singapore' },
   { src: '/images/work/colleagues.jpg', caption: 'With colleagues at the office in Singapore' },
   { src: '/images/work/farewell.jpg', caption: 'Farewell at Porsche Asia Pacific – in “Bangkok traffic” work mode' },
+  { src: '/images/work/installation-shooting.jpg', caption: 'Photo shoot for Porsche Installation Services (Aftersales Communication)' },
 ];
 
 // `stat` is shown instead of a photo when no image is set.
