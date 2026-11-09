@@ -2,7 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import MarketsMap from '../components/MarketsMap.astro';
-import { profile, experience, education, projects, skills, beyond, surfClub, workGallery, values } from '../data/profile';
+import HobbyOrbit from '../components/HobbyOrbit.astro';
+import { profile, experience, education, projects, skills, surfClub, workGallery, values } from '../data/profile';
 
 import { existsSync } from 'node:fs';
 
@@ -224,34 +225,8 @@ const headlineParts = profile.headline.split(' | ');
         </div>
       </article>
 
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {beyond.map((b) => (
-          <article class="card reveal overflow-hidden">
-            {b.image ? (
-              <div class="relative">
-                <img src={b.image} alt={b.title} loading="lazy" class="aspect-[4/3] w-full object-cover" style={'pos' in b && b.pos ? `object-position: ${b.pos}` : ''} />
-                {'stat' in b && b.stat && (
-                  <span class="absolute top-3 left-3 rounded-full px-3 py-1 font-[family-name:var(--font-display)] text-sm font-semibold backdrop-blur-md" style="background: color-mix(in srgb, var(--bg) 65%, transparent); color: var(--accent)">
-                    {b.stat} · Worlds 2022
-                  </span>
-                )}
-              </div>
-            ) : 'stat' in b && b.stat ? (
-              <div class="placeholder grid aspect-[4/3] w-full place-items-center border-0 text-center">
-                <div>
-                  <p class="font-[family-name:var(--font-display)] text-6xl font-semibold" style="color: var(--accent)">{b.stat}</p>
-                  <p class="mt-2 text-xs uppercase tracking-widest">{b.statLabel}</p>
-                </div>
-              </div>
-            ) : (
-              <div class="placeholder grid aspect-[4/3] w-full place-items-center border-0 text-sm">Photo: {b.title}</div>
-            )}
-            <div class="p-6">
-              <h3 class="font-[family-name:var(--font-display)] text-lg font-semibold">{b.title}</h3>
-              <p class="mt-2 text-sm leading-relaxed" style="color: var(--muted)">{b.text}</p>
-            </div>
-          </article>
-        ))}
+      <div class="mt-12">
+        <HobbyOrbit />
       </div>
     </section>
 

@@ -22,7 +22,7 @@ const themes = [
     </a>
 
     <ul class="hidden items-center gap-7 text-sm md:flex" style="color: var(--muted)">
-      {links.map((l) => <li><a href={l.href} class="transition hover:text-[var(--text)]">{l.label}</a></li>)}
+      {links.map((l) => <li><a href={l.href} data-nav-link class="nav-link transition hover:text-[var(--text)]">{l.label}</a></li>)}
     </ul>
 
     <div class="flex items-center gap-3">
@@ -49,7 +49,7 @@ const themes = [
     class="mx-4 mt-2 hidden flex-col gap-1 rounded-2xl border p-3 text-sm backdrop-blur-xl md:hidden"
     style="border-color: var(--line); background: color-mix(in srgb, var(--bg) 85%, transparent)"
   >
-    {links.map((l) => <li><a href={l.href} class="block rounded-lg px-3 py-2 hover:bg-white/5">{l.label}</a></li>)}
+    {links.map((l) => <li><a href={l.href} data-nav-link class="nav-link block rounded-lg px-3 py-2 hover:bg-white/5">{l.label}</a></li>)}
   </ul>
 </header>
 
@@ -78,4 +78,34 @@ const themes = [
   menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => {
     menu.classList.add('hidden'); menu.classList.remove('flex');
   }));
+
+  // Scroll spy: highlight the nav link of the section currently in view.
+  const navLinks = [...document.querySelectorAll<HTMLAnchorElement>('[data-nav-link]')];
+  const setActive = (id: string | null) =>
+    navLinks.forEach((a) => {
+      const on = id !== null && a.getAttribute('href') === `#${id}`;
+      a.classList.toggle('is-active', on);
+      if (on) a.setAttribute('aria-current', 'location');
+      else a.removeAttribute('aria-current');
+    });
+  const sections = [...new Set(navLinks.map((a) => a.getAttribute('href')!.slice(1)))]
+    .map((id) => document.getElementById(id))
+    .filter((s): s is HTMLElement => !!s);
+  const spy = () => {
+    const line = window.innerHeight * 0.35;
+    let current: string | null = null;
+    for (const s of sections) if (s.getBoundingClientRect().top <= line) current = s.id;
+    // at the very bottom, the last section wins
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) current = sections.at(-1)?.id ?? current;
+    setActive(current);
+  };
+  addEventListener('scroll', spy, { passive: true });
+  addEventListener('resize', spy);
+  spy();
 </script>
+
+<style>
+  .nav-link.is-active {
+    color: var(--accent);
+  }
+</style>
