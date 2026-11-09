@@ -5,6 +5,8 @@ export const profile = {
   headline:
     'MSc Business Analytics @ NOVA SBE | Ex-Porsche APAC & Water-Tech Startup | Curious about ML & GenAI, driven by dreams (and data)',
   location: 'Lisbon, Portugal',
+  traits: ['Results-driven', 'Hands-on', 'Ambitious', 'Communicative'],
+  motto: 'Passionate about whatever drives me.',
   intro:
     'Eight years at Porsche AG – from dual student to shaping regional CRM, sales and marketing for Asia Pacific and Australia. Now catching a new wave: diving deeper into data analytics and machine learning at NOVA SBE to turn data into business decisions, and building my own products on the side.',
   stats: [
@@ -26,7 +28,7 @@ export const experience = [
     points: [
       'Managed CRM and marketing projects for the Regional Office in Singapore and the importer Porsche Cars Australia.',
       'Developed the "Sales Funnel Management Excellence" (SAFE) concept for the Overseas & Emerging Markets region – from shaping the strategic framework and reporting, to building a market enablement hub, to dealer trainings across the globe.',
-      'Worked side by side with markets and dealers overseas – from market deep dives to on-site presentations, close to where the real insights are.',
+      'Worked side by side with markets and dealers overseas – from market deep dives to on-site presentations.',
       'Built strong working relationships across departments and continents.',
     ],
     tags: ['CRM', 'Sales Funnel', 'Reporting', 'Dealer Training', 'APAC'],
@@ -45,7 +47,7 @@ export const experience = [
     points: [
       'Developed communication concepts, campaigns and assets for Aftersales products and services.',
       'Prepared and led the "Service Communication Council" with Porsche subsidiaries worldwide.',
-      'Key Account for Porsche Middle East and Porsche Ibérica; initiated the Service Churn Project.',
+      'Key Account for Porsche Middle East and Porsche Ibérica; shaped the Service Churn Project.',
     ],
     tags: ['Marketing', 'Stakeholder Mgmt', 'Churn'],
   },
@@ -57,7 +59,7 @@ export const experience = [
     stations: [
       { name: 'Aftersales Communication', detail: "Bachelor thesis on the strategic positioning of Aftersales content across Porsche's online channels" },
       { name: 'Controlling Sales', detail: 'Excel/VBA monthly reports, internal cost calculation tool, mid-year budgeting and forecasting' },
-      { name: 'Aftersales Business Development', detail: 'Developed a "Used Car Check" concept to evaluate the condition of used Porsche vehicles – a new service generating additional Aftersales revenue; monthly revenue reporting' },
+      { name: 'Aftersales Business Development', detail: 'Developed a "Used Car Check" concept to generate additional revenue, based on a Business Model Canvas; monthly revenue reporting' },
       { name: 'Panamera Development', detail: 'Prototype and vehicle testing' },
       { name: 'Procurement Metal', detail: '' }, // TODO: add a one-liner
       { name: 'Sales Smart Mobility', detail: 'Digital Ecosystem' },
@@ -153,12 +155,12 @@ export const workGallery = [
   { src: '/images/work/welcome-apac.jpg', caption: 'At the Porsche Asia Pacific office' },
   { src: '/images/work/sydney-south.jpg', caption: 'Dealer visit at Porsche Centre Sydney South' },
   // TODO: confirm captions below
-  { src: '/images/work/workshop-screen.jpg', caption: 'Presenting sales funnel insights' },
-  { src: '/images/work/presenting-room.jpg', caption: 'Workshop with market colleagues' },
+  { src: '/images/work/workshop-screen.jpg', caption: 'Presenting the SAFE Score in Singapore', pos: '15% center' },
+  { src: '/images/work/presenting-room.jpg', caption: 'Dealer SAFE training in Melbourne', pos: '0% center' },
   { src: '/images/work/market-visit.jpg', caption: 'Market visit at Porsche Cars Australia' },
-  { src: '/images/work/porsche-centre.jpg', caption: 'Visiting a Porsche Centre' },
-  { src: '/images/work/colleagues.jpg', caption: 'With colleagues at the office' },
-  { src: '/images/work/farewell.jpg', caption: 'Farewell at Porsche Asia Pacific' },
+  { src: '/images/work/porsche-centre.jpg', caption: 'Porsche Studio Singapore' },
+  { src: '/images/work/colleagues.jpg', caption: 'With colleagues at the office in Singapore' },
+  { src: '/images/work/farewell.jpg', caption: 'Farewell at Porsche Asia Pacific – in “Bangkok traffic” work mode' },
 ];
 
 // `stat` is shown instead of a photo when no image is set.
@@ -173,7 +175,7 @@ export const beyond = [
   {
     title: 'Beach Volleyball',
     line: 'Read. Decide. Attack.',
-    text: 'The most technical and tactical sport I know: read the game, find the open spot, hit it. Playing regional tournaments.',
+    text: 'A highly technical and tactical sport: read the game, find the open spot, hit it. Playing regional tournaments.',
     image: '/images/hobbies/beach-volleyball.jpg',
     pos: 'center 75%',
   },

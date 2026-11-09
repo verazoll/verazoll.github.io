@@ -1,0 +1,117 @@
+---
+// "Let's turn data into decisions" as motion: scattered data points drift in from the left,
+// get sorted into a few clean streams and converge into one glowing decision point on the right.
+interface Props { class?: string }
+const { class: className = '' } = Astro.props;
+---
+<canvas class={`data-flow ${className}`} aria-hidden="true" data-flow></canvas>
+
+<script>
+  type P = { t: number; speed: number; y0: number; lane: number; size: number; wobble: number };
+
+  document.querySelectorAll<HTMLCanvasElement>('[data-flow]').forEach((canvas) => {
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const lanes = [-0.22, -0.08, 0.08, 0.22]; // streams, relative to height, around the centre
+    let w = 0, h = 0, dpr = 1, running = false, raf = 0;
+    let accent = '#5eead4', muted = '#8a99b8';
+
+    const readColors = () => {
+      const cs = getComputedStyle(document.documentElement);
+      accent = cs.getPropertyValue('--accent').trim() || accent;
+      muted = cs.getPropertyValue('--muted').trim() || muted;
+    };
+    const resize = () => {
+      dpr = Math.min(devicePixelRatio || 1, 2);
+      const r = canvas.getBoundingClientRect();
+      w = r.width; h = r.height;
+      canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    const spawn = (t = Math.random() * 0.3): P => ({
+      t,
+      speed: 0.0012 + Math.random() * 0.0016,
+      y0: Math.random(),
+      lane: Math.floor(Math.random() * lanes.length),
+      size: 0.8 + Math.random() * 1.6,
+      wobble: Math.random() * Math.PI * 2,
+    });
+    const count = () => Math.round(Math.min(220, Math.max(80, w / 5)));
+    let ps: P[] = [];
+
+    // where a particle is at progress t (0 = left, 1 = decision point)
+    const ease = (x: number) => x * x * (3 - 2 * x);
+    const pos = (p: P, time: number) => {
+      const x = p.t * w * 0.86 + w * 0.04;
+      const chaos = p.y0 * h;
+      const stream = h / 2 + lanes[p.lane] * h;
+      const sortK = ease(Math.min(1, Math.max(0, (p.t - 0.15) / 0.4)));   // data gets sorted
+      const mergeK = ease(Math.min(1, Math.max(0, (p.t - 0.7) / 0.3)));   // streams merge
+      let y = chaos + (stream - chaos) * sortK;
+      y = y + (h / 2 - y) * mergeK;
+      y += Math.sin(time * 0.002 + p.wobble) * 6 * (1 - sortK);          // jitter only while unsorted
+      return { x, y, k: sortK, m: mergeK };
+    };
+
+    const draw = (time: number) => {
+      ctx.clearRect(0, 0, w, h);
+      const dx = w * 0.9, dy = h / 2;
+
+      // faint guide streams
+      ctx.lineWidth = 1;
+      lanes.forEach((l) => {
+        ctx.beginPath();
+        ctx.moveTo(w * 0.32, h / 2 + l * h);
+        ctx.bezierCurveTo(w * 0.62, h / 2 + l * h, w * 0.72, dy, dx, dy);
+        ctx.strokeStyle = accent; ctx.globalAlpha = 0.12; ctx.stroke();
+      });
+
+      // particles
+      for (const p of ps) {
+        const { x, y, k, m } = pos(p, time);
+        ctx.globalAlpha = 0.3 + 0.65 * k * (1 - m * 0.3);
+        ctx.fillStyle = k > 0.5 ? accent : muted;
+        ctx.beginPath(); ctx.arc(x, y, p.size * (1 - m * 0.5), 0, Math.PI * 2); ctx.fill();
+      }
+
+      // decision point with soft pulse
+      const pulse = calm ? 0.5 : (Math.sin(time * 0.003) + 1) / 2;
+      const g = ctx.createRadialGradient(dx, dy, 0, dx, dy, 40 + pulse * 18);
+      g.addColorStop(0, accent); g.addColorStop(1, 'transparent');
+      ctx.globalAlpha = 0.35 + pulse * 0.2; ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(dx, dy, 60, 0, Math.PI * 2); ctx.fill();
+      ctx.globalAlpha = 1; ctx.fillStyle = accent;
+      ctx.beginPath(); ctx.arc(dx, dy, 4, 0, Math.PI * 2); ctx.fill();
+      ctx.globalAlpha = 1;
+    };
+
+    const step = (time: number) => {
+      for (let i = 0; i < ps.length; i++) {
+        ps[i].t += ps[i].speed;
+        if (ps[i].t >= 1) ps[i] = spawn(0);
+      }
+      draw(time);
+      if (running) raf = requestAnimationFrame(step);
+    };
+
+    const start = () => { if (!running && !calm) { running = true; raf = requestAnimationFrame(step); } };
+    const stop = () => { running = false; cancelAnimationFrame(raf); };
+
+    resize(); readColors();
+    ps = Array.from({ length: count() }, () => spawn(Math.random()));
+    draw(0);
+
+    new ResizeObserver(() => { resize(); ps = Array.from({ length: count() }, () => spawn(Math.random())); draw(0); }).observe(canvas);
+    new MutationObserver(readColors).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    new IntersectionObserver(([e]) => (e.isIntersecting ? start() : stop())).observe(canvas);
+  });
+</script>
+
+<style>
+  .data-flow {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+</style>
