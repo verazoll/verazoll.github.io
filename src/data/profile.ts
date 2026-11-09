@@ -26,6 +26,8 @@ export const experience = [
     points: [
       'Managed CRM and marketing projects for the Regional Office in Singapore and the importer Porsche Cars Australia.',
       'Developed the "Sales Funnel Management Excellence" (SAFE) concept for the Overseas & Emerging Markets region – from shaping the strategic framework and reporting, to building a market enablement hub, to dealer trainings across the globe.',
+      'Worked side by side with markets and dealers overseas – from market deep dives to on-site presentations, close to where the real insights are.',
+      'Built strong working relationships across departments and continents.',
     ],
     tags: ['CRM', 'Sales Funnel', 'Reporting', 'Dealer Training', 'APAC'],
   },
@@ -55,7 +57,7 @@ export const experience = [
     stations: [
       { name: 'Aftersales Communication', detail: "Bachelor thesis on the strategic positioning of Aftersales content across Porsche's online channels" },
       { name: 'Controlling Sales', detail: 'Excel/VBA monthly reports, internal cost calculation tool, mid-year budgeting and forecasting' },
-      { name: 'Aftersales Business Development', detail: '"Used Car Check" concept for additional revenue; monthly revenue reporting' },
+      { name: 'Aftersales Business Development', detail: 'Developed a "Used Car Check" concept to evaluate the condition of used Porsche vehicles – a new service generating additional Aftersales revenue; monthly revenue reporting' },
       { name: 'Panamera Development', detail: 'Prototype and vehicle testing' },
       { name: 'Procurement Metal', detail: '' }, // TODO: add a one-liner
       { name: 'Sales Smart Mobility', detail: 'Digital Ecosystem' },
@@ -84,16 +86,10 @@ export const markets = {
   ],
 };
 
-// What I took away from eight years at Porsche (from my farewell post, in short).
-export const values = [
-  { title: 'Close to markets', text: 'Working side by side with markets and dealers overseas – that is where the real insights are.' },
-  { title: 'Every deep dive', text: 'Every challenge, every discussion, every presentation – I enjoyed them all.' },
-  { title: 'People first', text: 'Great colleagues and friends across departments and continents, on and off the water.' },
-];
-
 export const education = [
-  { title: 'MSc Business Analytics', org: 'NOVA School of Business and Economics, Lisbon', period: '2026 – 2027' },
-  { title: 'B.Eng. Industrial Engineering', org: 'DHBW Stuttgart · dual programme with Porsche AG', period: '2018 – 2021' },
+  { title: 'MSc Business Analytics', org: 'NOVA School of Business and Economics, Lisbon', period: '2026 – 2027', note: 'Data analytics & machine learning in a business context' },
+  { title: 'B.Eng. Industrial Engineering', org: 'DHBW Stuttgart · dual programme with Porsche AG', period: '2018 – 2021', note: 'Grade 1.5' },
+  { title: 'Abitur (High School Diploma)', org: 'Kreisgymnasium Riedlingen', period: '2017', note: 'Grade 1.0' },
 ];
 
 export const projects = [
@@ -135,32 +131,84 @@ export const skills = {
 
 export const surfClub = {
   title: 'Porsche Surf Club',
-  text: 'Member of the Porsche Surf Club – surf trips, community events and sunsets in the water with colleagues. Surfing is also the reason Surfletics exists.',
+  text: 'Surf trips, community events and sunsets in the water – and the place where I met many great cross-departmental colleagues and some of my best friends, with many more days to come.',
   gallery: [
     { src: '/images/psc/psc-letters.jpg', alt: 'Club members forming the letters PSC on the beach, seen from above' },
+    { src: '/images/psc/psc-beach-sunset.jpg', alt: 'Two club members on the beach at sunset' },
+    { src: '/images/psc/psc-classic.jpg', alt: 'Club members next to a classic Porsche 356' },
     { src: '/images/psc/psc-sunset.jpg', alt: 'Club members waving in the water at sunset' },
+    { src: '/images/psc/psc-illustration-2.jpg', alt: 'Illustration of me surfing with a laptop' },
+    { src: '/images/psc/psc-night.jpg', alt: 'Club members at Porscheplatz at night' },
     { src: '/images/psc/psc-club.jpg', alt: 'Porsche Surf Club members talking at an event' },
+    { src: '/images/psc/psc-boat.jpg', alt: 'Selfie in the boat mirror on the way to the water' },
     { src: '/images/psc/psc-meetup.jpg', alt: 'Porsche Surf Club meetup next to classic Porsche cars' },
+    { src: '/images/psc/psc-plaque.jpg', alt: 'Farewell plaque from the Porsche Surf Club: "Vera – there is no substitute"' },
   ],
 };
 
 export const workGallery = [
-  { src: '/images/work/deep-dive.jpg', caption: 'Presenting a market deep-dive analysis' },
-  { src: '/images/work/sales-funnel.jpg', caption: 'Sales funnel workshop' },
-  { src: '/images/work/welcome-apac.jpg', caption: 'Welcome at Porsche Asia Pacific' },
-  { src: '/images/work/sydney-south.jpg', caption: 'Porsche Centre Sydney South' },
-  { src: '/images/work/team.jpg', caption: 'With the team' },
-  { src: '/images/work/porsche-platz.jpg', caption: 'Porscheplatz, Stuttgart-Zuffenhausen' },
+  { src: '/images/work/team.jpg', caption: 'Dealer workshop on SAFE in Bangkok' },
+  { src: '/images/work/sales-funnel.jpg', caption: 'Strategic council with market CEOs and sales leadership' },
+  { src: '/images/work/deep-dive.jpg', caption: 'Presenting a deep-dive analysis at Porsche Thailand' },
+  { src: '/images/work/welcome-apac.jpg', caption: 'At the Porsche Asia Pacific office' },
+  { src: '/images/work/sydney-south.jpg', caption: 'Dealer visit at Porsche Centre Sydney South' },
+  // TODO: confirm captions below
+  { src: '/images/work/workshop-screen.jpg', caption: 'Presenting sales funnel insights' },
+  { src: '/images/work/presenting-room.jpg', caption: 'Workshop with market colleagues' },
+  { src: '/images/work/market-visit.jpg', caption: 'Market visit at Porsche Cars Australia' },
+  { src: '/images/work/porsche-centre.jpg', caption: 'Visiting a Porsche Centre' },
+  { src: '/images/work/colleagues.jpg', caption: 'With colleagues at the office' },
+  { src: '/images/work/farewell.jpg', caption: 'Farewell at Porsche Asia Pacific' },
 ];
 
 // `stat` is shown instead of a photo when no image is set.
+// `line` is the punchline shown big in the orbit centre, `text` links the hobby to how I work.
 export const beyond = [
-  { title: 'Surfing', text: 'Chasing waves wherever I can – the reason Surfletics exists.', image: '/images/hobbies/surfing.jpg' },
-  { title: 'Beach Volleyball', text: 'Team sport, sun and sand – my favourite way to switch off.', image: '/images/hobbies/beach-volleyball.jpg', pos: 'center 75%' },
-  { title: 'Ski Instructor', text: 'B-Trainer and head of the junior group at Skizunft TSV Ertingen.', image: '/images/hobbies/ski.jpg' },
-  { title: 'HYROX', text: '4th place at the HYROX World Championship 2022 in Las Vegas.', image: '/images/hobbies/hyrox.jpg', pos: 'center 45%', stat: '4th', statLabel: 'World Championship 2022' },
-  { title: 'Skateboarding', text: 'Concrete waves for the days without swell.', image: '/images/hobbies/skate.jpg' },
-  { title: 'Dance', text: 'Rhythm, expression and a great counterbalance to data.', image: '/images/hobbies/dance.jpg', pos: 'center 0%' },
-  { title: 'Travel', text: 'Work & Travel in Australia, New Zealand and Indonesia; business trips to Singapore, Australia and Thailand.', image: '/images/hobbies/travel.jpg', pos: 'center 56%' },
-  { title: 'Photography', text: 'Capturing places and moments along the way.', image: '/images/hobbies/photography.jpg' },
+  {
+    title: 'Surfing',
+    line: 'Patience, confidence, courage.',
+    text: 'Wait for the right wave, then commit fully – the same goes for good business decisions.',
+    image: '/images/hobbies/surfing-wave.jpg',
+  },
+  {
+    title: 'Beach Volleyball',
+    line: 'Read. Decide. Attack.',
+    text: 'The most technical and tactical sport I know: read the game, find the open spot, hit it. Playing regional tournaments.',
+    image: '/images/hobbies/beach-volleyball.jpg',
+    pos: 'center 75%',
+  },
+  {
+    title: 'Ski Instructor',
+    line: 'Sharing what I can do.',
+    text: 'Teaching others makes me happy – and trains me to explain complex things simply. B-Trainer at Skizunft TSV Ertingen.',
+    image: '/images/hobbies/ski.jpg',
+  },
+  {
+    title: 'HYROX',
+    line: 'No shortcut to success.',
+    text: 'Commitment and consistency are key – on the race course and in every project. 4th at the 2022 World Championship.',
+    image: '/images/hobbies/hyrox.jpg',
+    pos: 'center 45%',
+    stat: '4th',
+  },
+  {
+    title: 'Skateboarding',
+    line: 'Fall. Recover. Ride again.',
+    text: 'An injury kept me off the board for almost a year. Setbacks are part of the ride – patience and resilience bring you back.',
+    image: '/images/hobbies/skate.jpg',
+  },
+  {
+    title: 'Dance',
+    line: 'Express. Connect. Feel free.',
+    text: 'The best way to express myself and connect with my body – my creative counterbalance to data.',
+    image: '/images/hobbies/dance.jpg',
+    pos: 'center 0%',
+  },
+  {
+    title: 'Travel',
+    line: 'Never get stuck.',
+    text: 'Adapting to new cultures again and again – from Work & Travel in Australia to business in nine international markets.',
+    image: '/images/hobbies/travel.jpg',
+    pos: 'center 56%',
+  },
 ];

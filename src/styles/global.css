@@ -178,3 +178,23 @@ body {
   .exp-card, .exp-dot { transition: none; }
   .exp-item:hover .exp-card { transform: none; }
 }
+
+/* Porscheplatz backdrop: soft oval fade on every side so it melts into the page blue */
+.experience-backdrop {
+  mask-image: radial-gradient(ellipse 50% 48% at 50% 38%, #000 30%, rgb(0 0 0 / 0.6) 55%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 50% 48% at 50% 38%, #000 30%, rgb(0 0 0 / 0.6) 55%, transparent 100%);
+}
+
+/* ---------- Porsche Surf Club: static photo strip ---------- */
+.psc-photo {
+  padding: 4px;
+  border-radius: 0.9rem;
+  background: color-mix(in srgb, var(--text) 8%, transparent);
+  border: 1px solid var(--line);
+  transform: rotate(var(--tilt));
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.psc-photo:hover {
+  transform: rotate(0deg) scale(1.06);
+  box-shadow: 0 16px 32px -14px var(--glow);
+}

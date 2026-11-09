@@ -25,8 +25,8 @@ const items = beyond.map((b, i) => {
   <div class="absolute inset-[31%] grid place-items-center rounded-full border text-center" style="border-color: var(--line); background: color-mix(in srgb, var(--bg) 70%, transparent)">
     <div class="px-[8%]" aria-live="polite">
       <p class="eyebrow text-[0.6rem] sm:text-[0.7rem]" data-orbit-eyebrow>What makes me</p>
-      <p class="mt-1 font-[family-name:var(--font-display)] text-base font-semibold sm:mt-2 sm:text-2xl" data-orbit-title>Beyond work</p>
-      <p class="mt-1 text-[0.65rem] leading-snug sm:mt-2 sm:text-sm" style="color: var(--muted)" data-orbit-text>Hover a circle</p>
+      <p class="mt-1 font-[family-name:var(--font-display)] text-sm leading-tight font-semibold sm:mt-2 sm:text-xl" data-orbit-title>Beyond work</p>
+      <p class="mt-2 hidden text-[0.8rem] leading-snug sm:block" style="color: var(--muted)" data-orbit-text>Hover a circle</p>
     </div>
   </div>
 
@@ -38,9 +38,10 @@ const items = beyond.map((b, i) => {
           <button
             type="button"
             class="orbit-tile group relative block size-full rounded-full p-[3px]"
-            data-title={it.title}
+            data-name={it.title}
+            data-title={it.line}
             data-text={it.text}
-            aria-label={`${it.title}: ${it.text}`}
+            aria-label={`${it.title} – ${it.line} ${it.text}`}
           >
             <img src={it.image} alt="" loading="lazy" class="size-full rounded-full object-cover" style={`object-position:${it.pos}`} />
             <span class="orbit-label pointer-events-none absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap text-[0.65rem] font-medium sm:text-xs" style="color: var(--muted)">{it.title}</span>
@@ -53,22 +54,27 @@ const items = beyond.map((b, i) => {
     ))}
   </ul>
 </div>
+<!-- on phones the centre is too small for the full story, so it appears below the circle -->
+<p class="mx-auto mt-6 max-w-sm px-2 text-center text-sm leading-relaxed sm:hidden" style="color: var(--muted)" data-orbit-text-mobile>Tap a circle</p>
 
 <script>
   document.querySelectorAll<HTMLElement>('[data-orbit]').forEach((orbit) => {
     const eyebrow = orbit.querySelector<HTMLElement>('[data-orbit-eyebrow]')!;
     const title = orbit.querySelector<HTMLElement>('[data-orbit-title]')!;
     const text = orbit.querySelector<HTMLElement>('[data-orbit-text]')!;
-    const initial = [eyebrow.textContent, title.textContent, text.textContent];
+    const mobileText = orbit.nextElementSibling as HTMLElement | null;
+    const initial = [eyebrow.textContent, title.textContent, text.textContent, mobileText?.textContent ?? ''];
     const show = (t: HTMLElement) => {
       orbit.classList.add('is-active');
-      eyebrow.textContent = 'Beyond work';
+      eyebrow.textContent = t.dataset.name ?? '';
       title.textContent = t.dataset.title ?? '';
       text.textContent = t.dataset.text ?? '';
+      if (mobileText) mobileText.textContent = t.dataset.text ?? '';
     };
     const reset = () => {
       orbit.classList.remove('is-active');
       [eyebrow.textContent, title.textContent, text.textContent] = initial;
+      if (mobileText) mobileText.textContent = initial[3];
     };
     orbit.querySelectorAll<HTMLElement>('.orbit-tile').forEach((t) => {
       t.addEventListener('pointerenter', () => show(t));

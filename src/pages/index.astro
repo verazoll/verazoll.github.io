@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import MarketsMap from '../components/MarketsMap.astro';
 import HobbyOrbit from '../components/HobbyOrbit.astro';
-import { profile, experience, education, projects, skills, surfClub, workGallery, values } from '../data/profile';
+import { profile, experience, education, projects, skills, surfClub, workGallery } from '../data/profile';
 
 import { existsSync } from 'node:fs';
 
@@ -65,7 +65,15 @@ const headlineParts = profile.headline.split(' | ');
     </section>
 
     <!-- EXPERIENCE -->
-    <section id="experience" class="py-24">
+    <section id="experience" class="relative isolate py-24">
+      <!-- faint Porscheplatz sculpture behind the experience timeline -->
+      <img
+        src="/images/work/porsche-platz.jpg"
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        class="experience-backdrop pointer-events-none absolute -top-44 right-0 -z-10 h-[64rem] max-h-full w-auto max-w-full select-none object-cover opacity-[0.4]"
+      />
       <div class="reveal mb-12">
         <p class="eyebrow">Experience</p>
         <h2 class="mt-3 font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight sm:text-5xl">Eight years at Porsche AG</h2>
@@ -107,14 +115,11 @@ const headlineParts = profile.headline.split(' | ');
       </ol>
 
       <!-- Work moments: small supporting photo strip -->
-      <div class="reveal mt-16 mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <p class="eyebrow text-[0.7rem]">Porsche Moments</p>
-          <p class="mt-1 font-[family-name:var(--font-display)] text-base font-medium italic tracking-tight sm:text-lg">
-            Driven by dreams<span style="color: var(--accent)">.</span>
-          </p>
-        </div>
-        <p class="text-sm" style="color: var(--muted)">For eight years – now driven by excitement for what's next.</p>
+      <div class="reveal mt-16 mb-5">
+        <p class="eyebrow text-[0.7rem]">Porsche Moments</p>
+        <p class="mt-1 font-[family-name:var(--font-display)] text-base font-medium italic tracking-tight sm:text-lg">
+          Driven by dreams for eight years…
+        </p>
       </div>
       <div class="reveal -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-3 sm:-mx-6 sm:px-6 [scrollbar-width:thin]">
         {workGallery.map((g) => (
@@ -124,25 +129,24 @@ const headlineParts = profile.headline.split(' | ');
           </figure>
         ))}
       </div>
+      <p class="reveal mt-4 text-right font-[family-name:var(--font-display)] text-base font-medium italic tracking-tight sm:text-lg">
+        …now driven by excitement for what's next<span style="color: var(--accent)">!</span>
+      </p>
+    </section>
 
-      <!-- What I took away -->
-      <div class="reveal mt-14 grid gap-6 border-t pt-8 sm:grid-cols-3" style="border-color: var(--line)">
-        {values.map((v, i) => (
-          <div>
-            <p class="font-[family-name:var(--font-display)] text-sm font-semibold">
-              <span class="mr-2 tabular-nums" style="color: var(--accent)">{String(i + 1).padStart(2, '0')}</span>{v.title}
-            </p>
-            <p class="mt-2 text-sm leading-relaxed" style="color: var(--muted)">{v.text}</p>
-          </div>
-        ))}
+    <!-- EDUCATION -->
+    <section id="education" class="py-24">
+      <div class="reveal mb-12">
+        <p class="eyebrow">Education</p>
+        <h2 class="mt-3 font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight sm:text-5xl">Engineering meets analytics</h2>
       </div>
-
-      <div class="mt-16 grid gap-4 sm:grid-cols-2">
+      <div class="grid gap-4 md:grid-cols-3">
         {education.map((ed) => (
-          <div class="card reveal p-6">
-            <p class="eyebrow text-[0.7rem]">Education · {ed.period}</p>
-            <h3 class="mt-3 font-[family-name:var(--font-display)] text-lg font-semibold">{ed.title}</h3>
+          <div class="card reveal p-6 sm:p-8">
+            <p class="eyebrow text-[0.7rem]">{ed.period}</p>
+            <h3 class="mt-3 font-[family-name:var(--font-display)] text-xl font-semibold">{ed.title}</h3>
             <p class="mt-1 text-sm" style="color: var(--muted)">{ed.org}</p>
+            {ed.note && <p class="mt-4 text-sm" style="color: var(--accent)">{ed.note}</p>}
           </div>
         ))}
       </div>
@@ -212,15 +216,18 @@ const headlineParts = profile.headline.split(' | ');
         <h2 class="mt-3 font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight sm:text-5xl">What keeps me going</h2>
         <p class="mt-4 max-w-2xl" style="color: var(--muted)">Endurance, team spirit and a love for the ocean – the same drive I bring to work.</p>
       </div>
-      <article class="card reveal mb-4 grid items-center gap-5 p-5 sm:p-6 md:grid-cols-[1fr_1.3fr]">
+      <article class="card reveal mb-4 grid items-center gap-5 overflow-hidden p-5 sm:p-6 md:grid-cols-[1fr_1.5fr]">
         <div>
           <p class="eyebrow text-[0.7rem]">Community</p>
           <h3 class="mt-2 font-[family-name:var(--font-display)] text-lg font-semibold">{surfClub.title}</h3>
           <p class="mt-2 text-sm leading-relaxed" style="color: var(--muted)">{surfClub.text}</p>
         </div>
-        <div class="grid grid-cols-4 gap-2">
-          {surfClub.gallery.map((g) => (
-            <img src={g.src} alt={g.alt} loading="lazy" class="aspect-square w-full rounded-lg object-cover" />
+        <!-- static photo strip: scroll sideways to see more -->
+        <div class="psc-strip -mx-1 flex snap-x snap-mandatory gap-3 overflow-x-auto px-1 py-4 [scrollbar-width:thin]">
+          {surfClub.gallery.map((g, i) => (
+            <figure class="psc-photo shrink-0 snap-start" style={`--tilt:${[-2, 1.5, -1, 2, -1.5][i % 5]}deg`}>
+              <img src={g.src} alt={g.alt} loading="lazy" class="h-36 w-28 rounded-xl object-cover sm:h-44 sm:w-32" />
+            </figure>
           ))}
         </div>
       </article>
@@ -232,11 +239,13 @@ const headlineParts = profile.headline.split(' | ');
 
     <!-- CONTACT -->
     <section id="contact" class="py-24">
-      <div class="card reveal relative overflow-hidden p-8 text-center sm:p-16">
-        <div aria-hidden="true" class="absolute inset-0 -z-10" style="background: radial-gradient(circle at 50% 0%, var(--glow), transparent 70%)"></div>
+      <div class="card reveal relative isolate overflow-hidden p-8 text-center sm:p-16">
+        <!-- character backdrop: classic 911 with surfboards on the coast -->
+        <img src="/images/porsche-coast.jpg" alt="" aria-hidden="true" loading="lazy" class="absolute inset-0 -z-20 size-full object-cover opacity-35" style="object-position: center 76%" />
+        <div aria-hidden="true" class="absolute inset-0 -z-10" style="background: radial-gradient(ellipse 60% 70% at 50% 45%, color-mix(in srgb, var(--bg) 82%, transparent), color-mix(in srgb, var(--bg) 35%, transparent))"></div>
         <p class="eyebrow">Contact</p>
         <h2 class="mx-auto mt-3 max-w-2xl font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight sm:text-5xl">Let's turn data into decisions.</h2>
-        <p class="mx-auto mt-4 max-w-xl" style="color: var(--muted)">Open for internships, projects and conversations around analytics, CRM and product.</p>
+        <p class="mx-auto mt-4 max-w-xl" style="color: var(--muted)">Open for analytical roles, AI projects and conversations about GenAI and superintelligence.</p>
         <div class="mt-8 flex flex-wrap justify-center gap-3">
           {profile.links.linkedin && (
             <a href={profile.links.linkedin} target="_blank" rel="noopener" class="rounded-full px-6 py-3 text-sm font-medium" style="background: var(--accent); color: var(--bg)">LinkedIn</a>
