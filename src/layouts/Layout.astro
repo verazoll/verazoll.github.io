@@ -32,6 +32,27 @@ const { title, description } = Astro.props;
         { threshold: 0, rootMargin: '0px 0px -8% 0px' },
       );
       document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+      // Experience cards: soft 3D tilt and spotlight that follow the pointer.
+      const fineHover = matchMedia('(hover: hover) and (pointer: fine)').matches;
+      const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (fineHover && !calm) {
+        document.querySelectorAll<HTMLElement>('.exp-card').forEach((card) => {
+          card.addEventListener('pointermove', (ev) => {
+            const r = card.getBoundingClientRect();
+            const x = (ev.clientX - r.left) / r.width;
+            const y = (ev.clientY - r.top) / r.height;
+            card.style.setProperty('--mx', `${x * 100}%`);
+            card.style.setProperty('--my', `${y * 100}%`);
+            card.style.setProperty('--ry', `${(x - 0.5) * 4}deg`);
+            card.style.setProperty('--rx', `${(0.5 - y) * 4}deg`);
+          });
+          card.addEventListener('pointerleave', () => {
+            card.style.setProperty('--rx', '0deg');
+            card.style.setProperty('--ry', '0deg');
+          });
+        });
+      }
     </script>
   </body>
 </html>

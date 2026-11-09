@@ -6,7 +6,7 @@ export const profile = {
     'MSc Business Analytics @ NOVA SBE | Ex-Porsche APAC & Water-Tech Startup | Curious about ML & GenAI, driven by dreams (and data)',
   location: 'Lisbon, Portugal',
   intro:
-    'Eight years at Porsche AG – from dual student to Market Specialist CRM & Marketing for Asia Pacific and Australia. Now deepening data analytics and machine learning at NOVA SBE to turn data into business decisions, and building my own products on the side.',
+    'Eight years at Porsche AG – from dual student to shaping regional CRM, sales and marketing for Asia Pacific and Australia. Now catching a new wave: diving deeper into data analytics and machine learning at NOVA SBE to turn data into business decisions, and building my own products on the side.',
   stats: [
     { value: '8', label: 'years at Porsche AG' },
     { value: '9', label: 'international markets' },
@@ -25,9 +25,9 @@ export const experience = [
     period: '02/2024 – 08/2026',
     points: [
       'Managed CRM and marketing projects for the Regional Office in Singapore and the importer Porsche Cars Australia.',
-      'Developed the "Sales Funnel Management Excellence" (SAFE) concept for the Overseas & Emerging Markets region – coaching initiatives for Porsche Centres and end-to-end sales funnel reporting.',
+      'Developed the "Sales Funnel Management Excellence" (SAFE) concept for the Overseas & Emerging Markets region – from shaping the strategic framework and reporting, to building a market enablement hub, to dealer trainings across the globe.',
     ],
-    tags: ['CRM', 'Sales Funnel', 'Reporting', 'APAC'],
+    tags: ['CRM', 'Sales Funnel', 'Reporting', 'Dealer Training', 'APAC'],
   },
   {
     role: 'VA Talent Program',
@@ -64,6 +64,33 @@ export const experience = [
   },
 ];
 
+// Markets shown on the world map. Country names must match world-atlas (Natural Earth) names.
+// `hubs` are drawn as glowing dots (also used for countries too small for the map).
+export const markets = {
+  regions: [
+    { name: 'Home base', countries: ['Germany'] },
+    { name: 'Asia Pacific', countries: ['Thailand', 'Malaysia'] }, // TODO: confirm APAC markets
+    { name: 'East Asia', countries: ['Japan', 'South Korea', 'Taiwan'] },
+    { name: 'Australia', countries: ['Australia'] },
+    { name: 'Middle East', countries: ['United Arab Emirates', 'Saudi Arabia', 'Qatar', 'Kuwait', 'Oman'] },
+    { name: 'Latin America', countries: ['Brazil', 'Mexico', 'Chile', 'Colombia', 'Peru', 'Argentina'] }, // TODO: confirm
+    { name: 'Iberia', countries: ['Spain', 'Portugal'] },
+  ],
+  hubs: [
+    { name: 'Stuttgart', note: 'Porsche AG HQ', lon: 9.18, lat: 48.78 },
+    { name: 'Singapore', note: 'Porsche Asia Pacific regional office', lon: 103.82, lat: 1.35 },
+    { name: 'Bahrain', note: 'Porsche Middle East', lon: 50.56, lat: 26.07 },
+    { name: 'Melbourne', note: 'Porsche Cars Australia', lon: 144.96, lat: -37.81 },
+  ],
+};
+
+// What I took away from eight years at Porsche (from my farewell post, in short).
+export const values = [
+  { title: 'Close to markets', text: 'Working side by side with markets and dealers overseas – that is where the real insights are.' },
+  { title: 'Every deep dive', text: 'Every challenge, every discussion, every presentation – I enjoyed them all.' },
+  { title: 'People first', text: 'Great colleagues and friends across departments and continents, on and off the water.' },
+];
+
 export const education = [
   { title: 'MSc Business Analytics', org: 'NOVA School of Business and Economics, Lisbon', period: '2026 – 2027' },
   { title: 'B.Eng. Industrial Engineering', org: 'DHBW Stuttgart · dual programme with Porsche AG', period: '2018 – 2021' },
@@ -93,7 +120,16 @@ export const projects = [
 
 export const skills = {
   'Data & Tech': ['Python', 'Machine Learning', 'Excel / VBA', 'Access', 'SolidWorks', 'AI Automation'],
-  Business: ['CRM', 'Sales Funnel Management', 'Reporting', 'Marketing & Communication', 'Project Management'],
+  Business: [
+    'CRM',
+    'Sales Funnel Management',
+    'Reporting',
+    'Marketing & Communication',
+    'Project Management',
+    'Stakeholder Communication',
+    'Organisational Skills',
+    'Cross-cultural Collaboration',
+  ],
   Languages: ['German · native', 'English · C1', 'French · B2', 'Spanish · B2', 'Portuguese · beginner'],
 };
 
@@ -125,6 +161,6 @@ export const beyond = [
   { title: 'HYROX', text: '4th place at the HYROX World Championship 2022 in Las Vegas.', image: '/images/hobbies/hyrox.jpg', pos: 'center 45%', stat: '4th', statLabel: 'World Championship 2022' },
   { title: 'Skateboarding', text: 'Concrete waves for the days without swell.', image: '/images/hobbies/skate.jpg' },
   { title: 'Dance', text: 'Rhythm, expression and a great counterbalance to data.', image: '/images/hobbies/dance.jpg', pos: 'center 0%' },
-  { title: 'Travel', text: 'Work & Travel in Australia, New Zealand and Indonesia; business trips to Singapore and Australia.', image: '/images/hobbies/travel.jpg' },
+  { title: 'Travel', text: 'Work & Travel in Australia, New Zealand and Indonesia; business trips to Singapore, Australia and Thailand.', image: '/images/hobbies/travel.jpg', pos: 'center 56%' },
   { title: 'Photography', text: 'Capturing places and moments along the way.', image: '/images/hobbies/photography.jpg' },
 ];
