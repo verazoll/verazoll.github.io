@@ -1,0 +1,110 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/space-grotesk';
+@import '@fontsource-variable/inter';
+
+/* Theme tokens. Three dark palettes to compare; switch via data-theme on <html>. */
+:root,
+[data-theme='abyss'] {
+  --bg: #040a18;        /* very deep navy */
+  --bg-soft: #0a1428;
+  --card: rgb(255 255 255 / 0.04);
+  --line: rgb(148 180 255 / 0.12);
+  --text: #e8eefc;
+  --muted: #8a99b8;
+  --accent: #5eead4;    /* teal, nod to the ocean */
+  --accent-2: #60a5fa;
+  --glow: rgb(56 120 255 / 0.25);
+}
+[data-theme='noir'] {
+  --bg: #050505;        /* near black */
+  --bg-soft: #0e0e10;
+  --card: rgb(255 255 255 / 0.035);
+  --line: rgb(255 255 255 / 0.09);
+  --text: #f4f4f5;
+  --muted: #a1a1aa;
+  --accent: #e4e4e7;
+  --accent-2: #a1a1aa;
+  --glow: rgb(255 255 255 / 0.08);
+}
+[data-theme='midnight'] {
+  --bg: #07070f;        /* blue-black */
+  --bg-soft: #0f0f1e;
+  --card: rgb(255 255 255 / 0.04);
+  --line: rgb(167 139 250 / 0.14);
+  --text: #ecebff;
+  --muted: #9a98bd;
+  --accent: #a78bfa;
+  --accent-2: #38bdf8;
+  --glow: rgb(124 58 237 / 0.22);
+}
+
+@theme {
+  --font-sans: 'Inter Variable', system-ui, sans-serif;
+  --font-display: 'Space Grotesk Variable', system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  backdrop-filter: blur(8px);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.card:hover {
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  transform: translateY(-2px);
+}
+.gradient-text {
+  background: linear-gradient(110deg, var(--text) 30%, var(--accent) 70%, var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.tag {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.placeholder {
+  background:
+    radial-gradient(circle at 30% 20%, var(--glow), transparent 60%),
+    linear-gradient(135deg, var(--bg-soft), var(--bg));
+  border: 1px dashed var(--line);
+  color: var(--muted);
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}

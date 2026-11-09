@@ -1,0 +1,81 @@
+---
+const links = [
+  { href: '#experience', label: 'Experience' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#beyond', label: 'Beyond Work' },
+  { href: '#contact', label: 'Contact' },
+];
+const themes = [
+  { id: 'abyss', label: 'Deep Navy', swatch: '#040a18', ring: '#5eead4' },
+  { id: 'noir', label: 'Black', swatch: '#050505', ring: '#e4e4e7' },
+  { id: 'midnight', label: 'Midnight', swatch: '#07070f', ring: '#a78bfa' },
+];
+---
+<header class="fixed inset-x-0 top-0 z-50 px-4">
+  <nav
+    class="mx-auto mt-3 flex max-w-6xl items-center justify-between gap-4 rounded-2xl border px-4 py-3 backdrop-blur-xl sm:px-6"
+    style="border-color: var(--line); background: color-mix(in srgb, var(--bg) 70%, transparent);"
+  >
+    <a href="#top" class="font-[family-name:var(--font-display)] text-lg font-semibold tracking-tight">
+      VZ<span style="color: var(--accent)">.</span>
+    </a>
+
+    <ul class="hidden items-center gap-7 text-sm md:flex" style="color: var(--muted)">
+      {links.map((l) => <li><a href={l.href} class="transition hover:text-[var(--text)]">{l.label}</a></li>)}
+    </ul>
+
+    <div class="flex items-center gap-3">
+      <div class="flex items-center gap-1.5" role="group" aria-label="Colour theme">
+        {themes.map((t) => (
+          <button
+            type="button"
+            data-set-theme={t.id}
+            title={t.label}
+            aria-label={`Theme: ${t.label}`}
+            class="theme-btn size-5 rounded-full border-2 transition hover:scale-110"
+            style={`background:${t.swatch}; border-color:${t.ring}`}
+          />
+        ))}
+      </div>
+      <button id="menu-btn" class="md:hidden" aria-label="Open menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+      </button>
+    </div>
+  </nav>
+
+  <ul
+    id="mobile-menu"
+    class="mx-4 mt-2 hidden flex-col gap-1 rounded-2xl border p-3 text-sm backdrop-blur-xl md:hidden"
+    style="border-color: var(--line); background: color-mix(in srgb, var(--bg) 85%, transparent)"
+  >
+    {links.map((l) => <li><a href={l.href} class="block rounded-lg px-3 py-2 hover:bg-white/5">{l.label}</a></li>)}
+  </ul>
+</header>
+
+<script>
+  const root = document.documentElement;
+  const mark = () =>
+    document.querySelectorAll<HTMLButtonElement>('.theme-btn').forEach((b) => {
+      b.style.boxShadow = b.dataset.setTheme === root.dataset.theme ? '0 0 0 3px var(--glow)' : 'none';
+    });
+  document.querySelectorAll<HTMLButtonElement>('[data-set-theme]').forEach((b) =>
+    b.addEventListener('click', () => {
+      root.dataset.theme = b.dataset.setTheme;
+      try { localStorage.setItem('theme', b.dataset.setTheme!); } catch {}
+      mark();
+    }),
+  );
+  mark();
+
+  const btn = document.getElementById('menu-btn')!;
+  const menu = document.getElementById('mobile-menu')!;
+  btn.addEventListener('click', () => {
+    const open = menu.classList.toggle('hidden') === false;
+    menu.classList.toggle('flex', open);
+    btn.setAttribute('aria-expanded', String(open));
+  });
+  menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => {
+    menu.classList.add('hidden'); menu.classList.remove('flex');
+  }));
+</script>
