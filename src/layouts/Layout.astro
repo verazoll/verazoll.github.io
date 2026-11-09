@@ -9,6 +9,8 @@ const { title, description } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <!-- Preview phase: keep the site out of search engines. Remove when going fully public. -->
+    <meta name="robots" content="noindex, nofollow" />
     <meta name="theme-color" content="#040a18" />
     <title>{title}</title>
     <script is:inline>
