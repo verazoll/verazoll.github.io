@@ -13,6 +13,13 @@ const { title, description } = Astro.props;
     <meta name="robots" content="noindex, nofollow" />
     <meta name="theme-color" content="#040a18" />
     <title>{title}</title>
+    <!-- Link previews (WhatsApp, LinkedIn, iMessage …) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://verazoll.github.io/" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://verazoll.github.io/images/portrait.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
     <script is:inline>
       // Apply saved theme before paint to avoid a flash.
       try {
