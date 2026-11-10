@@ -201,19 +201,19 @@ export const beyond = [
   {
     title: 'Skateboarding',
     line: 'Fall and fight back.',
-    text: 'An injury kept me off the board for almost a year – getting back on took patience.',
+    text: 'An injury kept me off sports for almost a year – getting back on the board took patience.',
     image: '/images/hobbies/skate.jpg',
   },
   {
     title: 'Dance',
     line: 'Expression and balance.',
-    text: 'A creative counterpart to working with data.',
+    text: 'Commercial and hip-hop – a creative counterpart to working with data.',
     image: '/images/hobbies/dance.jpg',
     pos: 'center 0%',
   },
   {
     title: 'Travel',
-    line: 'Staying curious.',
+    line: 'Curious and open-minded.',
     text: 'Work & Travel in Australia, New Zealand and Indonesia – adapting to new cultures along the way.',
     image: '/images/hobbies/travel.jpg',
     pos: 'center 56%',
