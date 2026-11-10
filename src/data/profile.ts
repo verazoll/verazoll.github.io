@@ -5,7 +5,7 @@ export const profile = {
   headline:
     'MSc Business Analytics @ NOVA SBE | Ex-Porsche APAC & Water-Tech Startup | Curious about ML & GenAI, driven by dreams (and data)',
   location: 'Lisbon, Portugal',
-  traits: ['Results-driven', 'Hands-on', 'Ambitious', 'Communicative'],
+  traits: ['Results-driven', 'Analytical', 'Hands-on', 'Ambitious', 'Communicative'],
   motto: 'Passionate about whatever drives me.',
   motto2: "Either I'm all in or all out.",
   intro:
