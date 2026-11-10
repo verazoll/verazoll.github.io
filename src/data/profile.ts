@@ -148,6 +148,7 @@ export const surfClub = {
     { src: '/images/psc/psc-club.jpg', alt: 'Porsche Surf Club members talking at an event' },
     { src: '/images/psc/psc-boat.jpg', alt: 'Selfie in the boat mirror on the way to the water' },
     { src: '/images/psc/psc-meetup.jpg', alt: 'Porsche Surf Club meetup next to classic Porsche cars' },
+    { src: '/images/psc/psc-kite-team.jpg', alt: 'Porsche Surf Club team in red jackets with kites on the beach' },
     { src: '/images/psc/psc-plaque.jpg', alt: 'Farewell plaque from the Porsche Surf Club: "Vera – there is no substitute"' },
   ],
 };
@@ -173,7 +174,7 @@ export const workGallery = [
 export const beyond = [
   {
     title: 'Surfing',
-    line: 'Patience and timing.',
+    line: 'Patience, timing and commitment.',
     text: 'Waiting for the right wave, then committing to it.',
     image: '/images/hobbies/surfing-wave.jpg',
   },
@@ -186,7 +187,7 @@ export const beyond = [
   },
   {
     title: 'Ski Instructor',
-    line: 'Teaching others.',
+    line: 'Free riding and teaching others.',
     text: 'B-Trainer and head of the junior group at Skizunft TSV Ertingen.',
     image: '/images/hobbies/ski.jpg',
   },
@@ -201,12 +202,12 @@ export const beyond = [
   {
     title: 'Skateboarding',
     line: 'Fall and fight back.',
-    text: 'An injury kept me off sports for almost a year – getting back on the board took patience.',
+    text: 'An injury kept me off sports for almost a year – getting back on track took patience.',
     image: '/images/hobbies/skate.jpg',
   },
   {
     title: 'Dance',
-    line: 'Expression and balance.',
+    line: 'Expression.',
     text: 'Commercial and hip-hop – a creative counterpart to working with data.',
     image: '/images/hobbies/dance.jpg',
     pos: 'center 0%',
@@ -217,5 +218,11 @@ export const beyond = [
     text: 'Work & Travel in Australia, New Zealand and Indonesia – adapting to new cultures along the way.',
     image: '/images/hobbies/travel.jpg',
     pos: 'center 56%',
+  },
+  {
+    title: 'Handstanding',
+    line: 'Trying to balance [life].',
+    text: 'Being upside down sometimes gives you a new perspective.',
+    image: '/images/hobbies/handstand.jpg',
   },
 ];
