@@ -95,7 +95,7 @@ export const markets = {
 
 export const education = [
   { title: 'MSc Business Analytics', org: 'NOVA School of Business and Economics, Lisbon', period: '2026 – 2027', note: 'Data analytics & machine learning in a business context' },
-  { title: 'B.Eng. Industrial Engineering', org: 'DHBW Stuttgart · dual programme with Porsche AG', period: '2018 – 2021', note: 'Grade 1.5' },
+  { title: 'B.Eng. Industrial Engineering', org: 'DHBW Stuttgart · dual programme with Porsche AG', period: '2018 – 2021', note: 'Grade 1.5', focus: ['Mechanical Engineering', 'International Technical Sales'] },
   { title: 'Abitur (High School Diploma)', org: 'Kreisgymnasium Riedlingen', period: '2017', note: 'Grade 1.0', focus: ['Physics focus', 'Advanced Maths +2 h/week'] },
 ];
 
@@ -111,7 +111,7 @@ export const projects = [
   },
   {
     name: 'Aqua Aware',
-    kind: 'Start-up · 2026',
+    kind: 'Start-up · 2025',
     text: 'Supported technical and software development of a water measurement device and represented the start-up at the 9th International Symposium at the Fraunhofer Institute.',
     link: '',
     linkLabel: '',
