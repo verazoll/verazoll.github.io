@@ -22,8 +22,10 @@ const items = beyond.map((b, i) => {
   <div aria-hidden="true" class="absolute inset-[30%] rounded-full" style="background: radial-gradient(circle, var(--glow), transparent 70%)"></div>
 
   <!-- centre -->
-  <div class="absolute inset-[31%] grid place-items-center rounded-full border text-center" style="border-color: var(--line); background: color-mix(in srgb, var(--bg) 70%, transparent)">
-    <div class="px-[8%]" aria-live="polite">
+  <div class="absolute inset-[31%] grid place-items-center overflow-hidden rounded-full border text-center" style="border-color: var(--line); background: color-mix(in srgb, var(--bg) 70%, transparent)">
+    <!-- faint portrait behind the centre text -->
+    <img src="/images/portrait.jpg" alt="" aria-hidden="true" loading="lazy" class="orbit-portrait pointer-events-none absolute inset-0 size-full rounded-full object-cover" style="object-position: center 22%" />
+    <div class="relative px-[8%]" aria-live="polite">
       <p class="eyebrow text-[0.6rem] sm:text-[0.7rem]" data-orbit-eyebrow>What makes me</p>
       <p class="mt-1 font-[family-name:var(--font-display)] text-sm leading-tight font-semibold sm:mt-2 sm:text-xl" data-orbit-title>Beyond work</p>
       <p class="mt-2 hidden text-[0.8rem] leading-snug sm:block" style="color: var(--muted)" data-orbit-text>Hover a circle</p>
@@ -132,6 +134,16 @@ const items = beyond.map((b, i) => {
   }
   .orbit-label {
     transition: opacity 0.3s ease;
+  }
+  .orbit-portrait {
+    opacity: 0.14;
+    filter: grayscale(0.3);
+    mask-image: radial-gradient(circle, #000 35%, transparent 72%);
+    -webkit-mask-image: radial-gradient(circle, #000 35%, transparent 72%);
+    transition: opacity 0.4s ease;
+  }
+  .orbit.is-active .orbit-portrait {
+    opacity: 0.06;
   }
   li:has(.orbit-tile:hover),
   li:has(.orbit-tile:focus-visible) {
