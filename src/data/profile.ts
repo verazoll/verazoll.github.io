@@ -7,6 +7,7 @@ export const profile = {
   location: 'Lisbon, Portugal',
   traits: ['Results-driven', 'Hands-on', 'Ambitious', 'Communicative'],
   motto: 'Passionate about whatever drives me.',
+  motto2: "Either I'm all in or all out.",
   intro:
     'Eight years at Porsche AG – from dual student to shaping regional CRM, sales and marketing for Asia Pacific and Australia. Now catching a new wave: diving deeper into data analytics and machine learning at NOVA SBE to turn data into business decisions, and building my own products on the side.',
   stats: [
@@ -154,14 +155,14 @@ export const surfClub = {
 };
 
 export const workGallery = [
-  { src: '/images/work/team.jpg', caption: 'Dealer workshop on SAFE in Bangkok' },
+  { src: '/images/work/team.jpg', caption: 'Sales funnel management workshop with dealers in Bangkok' },
   { src: '/images/work/sales-funnel.jpg', caption: 'Strategic council with market CEOs and sales leadership' },
   { src: '/images/work/deep-dive.jpg', caption: 'Presenting a deep-dive analysis at Porsche Thailand' },
   { src: '/images/work/welcome-apac.jpg', caption: 'At the Porsche Asia Pacific office' },
   { src: '/images/work/sydney-south.jpg', caption: 'Dealer visit at Porsche Centre Sydney South' },
   // TODO: confirm captions below
-  { src: '/images/work/workshop-screen.jpg', caption: 'Presenting the SAFE Score in Singapore', pos: '15% center' },
-  { src: '/images/work/presenting-room.jpg', caption: 'Dealer SAFE training in Melbourne', pos: '0% center' },
+  { src: '/images/work/workshop-screen.jpg', caption: 'Presenting the sales funnel score in Singapore', pos: '15% center' },
+  { src: '/images/work/presenting-room.jpg', caption: 'Sales funnel training for dealers in Melbourne', pos: '0% center' },
   { src: '/images/work/market-visit.jpg', caption: 'Market visit at Porsche Cars Australia' },
   { src: '/images/work/porsche-centre.jpg', caption: 'Porsche Studio Singapore' },
   { src: '/images/work/colleagues.jpg', caption: 'With colleagues at the office in Singapore' },
