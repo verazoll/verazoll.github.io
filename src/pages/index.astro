@@ -246,7 +246,7 @@ const headlineParts = profile.headline.split(' | ');
         <div class="psc-strip -mx-1 flex snap-x snap-mandatory gap-3 overflow-x-auto px-1 py-4 [scrollbar-width:thin]">
           {surfClub.gallery.map((g, i) => (
             <figure class="psc-photo shrink-0 snap-start" style={`--tilt:${[-2, 1.5, -1, 2, -1.5][i % 5]}deg`}>
-              <img src={g.src} alt={g.alt} loading="lazy" class="h-36 w-28 rounded-xl object-cover sm:h-44 sm:w-32" />
+              <img src={g.src} alt={g.alt} loading="lazy" class="h-36 w-28 rounded-xl object-cover sm:h-44 sm:w-32" style={'pos' in g && g.pos ? `object-position: ${g.pos}` : ''} />
             </figure>
           ))}
         </div>

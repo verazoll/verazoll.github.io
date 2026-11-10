@@ -140,33 +140,35 @@ export const surfClub = {
   title: 'Porsche Surf Club',
   text: 'Surf trips, community events and sunsets in the water – and the place where I met many great cross-departmental colleagues and some of my best friends, with many more days to come.',
   gallery: [
+    { src: '/images/psc/psc-kite-team.jpg', alt: 'Porsche Surf Club team in red jackets with kites on the beach' },
+    { src: '/images/psc/psc-wave-pool.jpg', alt: 'Surfing in a wave pool, seen from above', pos: '35% center' },
+    { src: '/images/psc/psc-sunset.jpg', alt: 'Club members waving in the water at sunset' },
     { src: '/images/psc/psc-letters.jpg', alt: 'Club members forming the letters PSC on the beach, seen from above' },
     { src: '/images/psc/psc-beach-sunset.jpg', alt: 'Two club members on the beach at sunset' },
     { src: '/images/psc/psc-classic.jpg', alt: 'Club members next to a classic Porsche 356' },
-    { src: '/images/psc/psc-sunset.jpg', alt: 'Club members waving in the water at sunset' },
     { src: '/images/psc/psc-illustration-2.jpg', alt: 'Illustration of me surfing with a laptop' },
     { src: '/images/psc/psc-night.jpg', alt: 'Club members at Porscheplatz at night' },
     { src: '/images/psc/psc-club.jpg', alt: 'Porsche Surf Club members talking at an event' },
     { src: '/images/psc/psc-boat.jpg', alt: 'Selfie in the boat mirror on the way to the water' },
     { src: '/images/psc/psc-meetup.jpg', alt: 'Porsche Surf Club meetup next to classic Porsche cars' },
-    { src: '/images/psc/psc-kite-team.jpg', alt: 'Porsche Surf Club team in red jackets with kites on the beach' },
     { src: '/images/psc/psc-plaque.jpg', alt: 'Farewell plaque from the Porsche Surf Club: "Vera – there is no substitute"' },
   ],
 };
 
+// Newest first, like the CV (order based on photo dates where available)
 export const workGallery = [
+  { src: '/images/work/farewell.jpg', caption: 'Farewell at Porsche Asia Pacific – in “Bangkok traffic” work mode' },
+  { src: '/images/work/workshop-screen.jpg', caption: 'Presenting the sales funnel score in Singapore', pos: '15% center' },
+  { src: '/images/work/deep-dive.jpg', caption: 'Presenting a deep-dive analysis at Porsche Thailand' },
   { src: '/images/work/team.jpg', caption: 'Sales funnel management workshop with dealers in Bangkok' },
   { src: '/images/work/sales-funnel.jpg', caption: 'Strategic council with market CEOs and sales leadership from Porsche AG in Weissach' },
-  { src: '/images/work/deep-dive.jpg', caption: 'Presenting a deep-dive analysis at Porsche Thailand' },
-  { src: '/images/work/welcome-apac.jpg', caption: 'At the Porsche Asia Pacific office' },
-  { src: '/images/work/sydney-south.jpg', caption: 'Dealer visit at Porsche Centre Sydney South' },
-  // TODO: confirm captions below
-  { src: '/images/work/workshop-screen.jpg', caption: 'Presenting the sales funnel score in Singapore', pos: '15% center' },
-  { src: '/images/work/presenting-room.jpg', caption: 'Sales funnel training for dealers in Melbourne', pos: '0% center' },
-  { src: '/images/work/market-visit.jpg', caption: 'Market visit at Porsche Cars Australia' },
-  { src: '/images/work/porsche-centre.jpg', caption: 'Porsche Studio Singapore' },
   { src: '/images/work/colleagues.jpg', caption: 'With colleagues at the office in Singapore' },
-  { src: '/images/work/farewell.jpg', caption: 'Farewell at Porsche Asia Pacific – in “Bangkok traffic” work mode' },
+  { src: '/images/work/welcome-apac.jpg', caption: 'At the Porsche Asia Pacific office', pos: 'center 0%' },
+  { src: '/images/work/presenting-room.jpg', caption: 'Sales funnel training for dealer sales, marketing and CRM teams in Melbourne', pos: '0% center' },
+  { src: '/images/work/market-visit.jpg', caption: 'After the dealer trainings at the Porsche training centre in Melbourne' },
+  { src: '/images/work/porsche-centre.jpg', caption: 'Porsche Studio Singapore' },
+  { src: '/images/work/sydney-south.jpg', caption: 'Dealer visit at Porsche Centre Sydney South' },
+  { src: '/images/work/barcelona-conference.jpg', caption: 'Representing Porsche at the After Sales Conference in Barcelona' },
   { src: '/images/work/installation-shooting.jpg', caption: 'Photo shoot for Porsche Installation Services (Aftersales Communication)' },
 ];
 
@@ -203,7 +205,7 @@ export const beyond = [
   {
     title: 'Skateboarding',
     line: 'Fall and fight back.',
-    text: 'An injury kept me off sports for almost a year – getting back on track took patience.',
+    text: 'A skateboard accident kept me off sports for almost a year – getting back on track took patience.',
     image: '/images/hobbies/skate.jpg',
   },
   {
