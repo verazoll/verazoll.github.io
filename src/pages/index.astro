@@ -160,6 +160,11 @@ const headlineParts = profile.headline.split(' | ');
             <p class="eyebrow text-[0.7rem]">{ed.period}</p>
             <h3 class="mt-3 font-[family-name:var(--font-display)] text-xl font-semibold">{ed.title}</h3>
             <p class="mt-1 text-sm" style="color: var(--muted)">{ed.org}</p>
+            {'focus' in ed && ed.focus && (
+              <ul class="mt-4 flex flex-wrap gap-2">
+                {ed.focus.map((f) => <li class="tag whitespace-nowrap">{f}</li>)}
+              </ul>
+            )}
             {ed.note && <p class="mt-4 text-sm" style="color: var(--accent)">{ed.note}</p>}
           </div>
         ))}
