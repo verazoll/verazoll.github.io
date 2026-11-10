@@ -4,6 +4,7 @@ import Nav from '../components/Nav.astro';
 import MarketsMap from '../components/MarketsMap.astro';
 import HobbyOrbit from '../components/HobbyOrbit.astro';
 import DataFlow from '../components/DataFlow.astro';
+import WaveDivider from '../components/WaveDivider.astro';
 import { profile, experience, education, projects, skills, surfClub, workGallery } from '../data/profile';
 
 import { existsSync } from 'node:fs';
@@ -48,7 +49,7 @@ const headlineParts = profile.headline.split(' | ');
           <MarketsMap class="absolute top-1/2 left-1/2 -z-10 w-[22rem] max-w-none -translate-x-1/2 -translate-y-1/2 sm:w-[28rem]" />
           {profile.stats.map((s) => (
             <div>
-              <dt class="font-[family-name:var(--font-display)] text-3xl font-semibold sm:text-4xl" style="color: var(--accent)">{s.value}</dt>
+              <dt class="font-[family-name:var(--font-display)] text-3xl font-semibold tabular-nums sm:text-4xl" style="color: var(--accent)" data-count={s.value}>{s.value}</dt>
               <dd class="mt-1 text-xs leading-snug" style="color: var(--muted)">{s.label}</dd>
             </div>
           ))}
@@ -145,6 +146,8 @@ const headlineParts = profile.headline.split(' | ');
       </p>
     </section>
 
+    <WaveDivider />
+
     <!-- EDUCATION -->
     <section id="education" class="py-12 md:py-16">
       <div class="reveal mb-12">
@@ -162,6 +165,8 @@ const headlineParts = profile.headline.split(' | ');
         ))}
       </div>
     </section>
+
+    <WaveDivider flip />
 
     <!-- PROJECTS -->
     <section id="projects" class="py-12 md:py-16">
@@ -204,6 +209,8 @@ const headlineParts = profile.headline.split(' | ');
       </div>
     </section>
 
+    <WaveDivider />
+
     <!-- SKILLS -->
     <section id="skills" class="py-12 md:py-16">
       <div class="reveal mb-12">
@@ -219,6 +226,8 @@ const headlineParts = profile.headline.split(' | ');
         ))}
       </div>
     </section>
+
+    <WaveDivider flip />
 
     <!-- BEYOND WORK -->
     <section id="beyond" class="pt-12 md:pt-16 pb-8 md:pb-10">

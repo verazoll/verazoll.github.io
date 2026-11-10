@@ -156,7 +156,7 @@ export const surfClub = {
 
 export const workGallery = [
   { src: '/images/work/team.jpg', caption: 'Sales funnel management workshop with dealers in Bangkok' },
-  { src: '/images/work/sales-funnel.jpg', caption: 'Strategic council with market CEOs and sales leadership' },
+  { src: '/images/work/sales-funnel.jpg', caption: 'Strategic council with market CEOs and sales leadership from Porsche AG in Weissach' },
   { src: '/images/work/deep-dive.jpg', caption: 'Presenting a deep-dive analysis at Porsche Thailand' },
   { src: '/images/work/welcome-apac.jpg', caption: 'At the Porsche Asia Pacific office' },
   { src: '/images/work/sydney-south.jpg', caption: 'Dealer visit at Porsche Centre Sydney South' },
@@ -216,7 +216,7 @@ export const beyond = [
   {
     title: 'Travel',
     line: 'Curious and open-minded.',
-    text: 'Work & Travel in Australia, New Zealand and Indonesia – adapting to new cultures along the way.',
+    text: 'From Work & Travel in Australia, New Zealand and Indonesia to working across cultures in nine international markets.',
     image: '/images/hobbies/travel.jpg',
     pos: 'center 56%',
   },

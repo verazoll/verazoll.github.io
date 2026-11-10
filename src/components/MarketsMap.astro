@@ -1,6 +1,7 @@
 ---
-// Subtle world-map illustration (static SVG rendered at build time, no client JS).
-// Used as a faint backdrop behind the hero stats; markets are slightly brighter.
+// Subtle world-map illustration (static SVG rendered at build time).
+// Used as a faint backdrop behind the hero stats. When it first scrolls into view,
+// the regions light up one after another and the hub dots appear (once, ~1.5 s).
 import { geoEqualEarth, geoPath } from 'd3-geo';
 import { feature } from 'topojson-client';
 import world from 'world-atlas/countries-110m.json';
@@ -18,33 +19,51 @@ const projection = geoEqualEarth().fitExtent([[4, 4], [W - 4, H - 4]], { type: '
 const path = geoPath(projection);
 path.digits?.(1); // keep the SVG small
 
-const home = new Set(markets.regions.filter((r) => r.name === 'Home base').flatMap((r) => r.countries));
-const active = new Set(markets.regions.flatMap((r) => r.countries));
-const countries = all.map((f: any) => ({
-  d: path(f) ?? '',
-  state: home.has(f.properties.name) ? 'home' : active.has(f.properties.name) ? 'active' : 'idle',
-}));
-const hubs = markets.hubs.map((h) => {
+// country -> index of its region (order of markets.regions = order of lighting up)
+const regionOf = new Map<string, number>();
+markets.regions.forEach((r, i) => r.countries.forEach((c) => regionOf.set(c, i)));
+const STEP = 0.18; // seconds between regions
+
+const countries = all.map((f: any) => {
+  const name = f.properties.name as string;
+  const region = regionOf.get(name);
+  const isHome = region !== undefined && markets.regions[region].name === 'Home base';
+  return { d: path(f) ?? '', state: region === undefined ? 'idle' : isHome ? 'home' : 'active', delay: (region ?? 0) * STEP };
+});
+const hubsDelay = markets.regions.length * STEP;
+const hubs = markets.hubs.map((h, i) => {
   const [x, y] = projection([h.lon, h.lat])!;
-  return { x, y, remote: 'remote' in h && !!h.remote };
+  return { x, y, remote: 'remote' in h && !!h.remote, delay: hubsDelay + i * 0.08 };
 });
 ---
-<svg viewBox={`0 0 ${W} ${H}`} class={`map-backdrop pointer-events-none select-none ${className}`} aria-hidden="true">
+<svg viewBox={`0 0 ${W} ${H}`} class={`map-backdrop pointer-events-none select-none ${className}`} aria-hidden="true" data-map>
   {countries.map((c) => (
     <path
       d={c.d}
+      class={`m-${c.state}`}
       fill={c.state === 'home' ? 'var(--accent-2)' : c.state === 'active' ? 'var(--accent)' : 'var(--text)'}
-      fill-opacity={c.state === 'idle' ? 0.06 : 0.32}
+      style={c.state === 'idle' ? undefined : `transition-delay:${c.delay}s`}
     />
   ))}
   {hubs.map((h) =>
     h.remote ? (
-      <circle cx={h.x} cy={h.y} r="7" fill="none" stroke="var(--accent)" stroke-opacity="0.8" stroke-width="2" />
+      <circle class="m-hub" cx={h.x} cy={h.y} r="7" fill="none" stroke="var(--accent)" stroke-opacity="0.8" stroke-width="2" style={`transition-delay:${h.delay}s`} />
     ) : (
-      <circle cx={h.x} cy={h.y} r="5" fill="var(--accent)" fill-opacity="0.7" />
+      <circle class="m-hub" cx={h.x} cy={h.y} r="5" fill="var(--accent)" fill-opacity="0.7" style={`transition-delay:${h.delay}s`} />
     ),
   )}
 </svg>
+
+<script>
+  // Light the map up once when it becomes visible (the page works without this: see .no-anim below).
+  document.querySelectorAll<SVGSVGElement>('[data-map]').forEach((svg) => {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { svg.classList.add('lit'); return; }
+    svg.classList.add('armed');
+    new IntersectionObserver((entries, obs) => {
+      if (entries.some((e) => e.isIntersecting)) { svg.classList.add('lit'); obs.disconnect(); }
+    }, { threshold: 0.3 }).observe(svg);
+  });
+</script>
 
 <style>
   .map-backdrop {
@@ -52,4 +71,12 @@ const hubs = markets.hubs.map((h) => {
     mask-image: radial-gradient(ellipse closest-side at 50% 50%, #000 35%, transparent 100%);
     -webkit-mask-image: radial-gradient(ellipse closest-side at 50% 50%, #000 35%, transparent 100%);
   }
+  .m-idle { fill-opacity: 0.06; }
+  .m-active, .m-home { fill-opacity: 0.32; transition: fill-opacity 0.6s ease; }
+  .m-hub { opacity: 1; transition: opacity 0.5s ease; }
+
+  /* before the reveal: markets look like every other country, dots hidden */
+  .armed:not(.lit) .m-active,
+  .armed:not(.lit) .m-home { fill-opacity: 0.06; }
+  .armed:not(.lit) .m-hub { opacity: 0; }
 </style>
