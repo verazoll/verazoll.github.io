@@ -27,9 +27,7 @@ const themes = [
     </ul>
 
     <div class="flex items-center gap-3">
-      <button type="button" data-tldr-open class="tldr-btn rounded-full border px-3 py-1.5 text-xs font-medium whitespace-nowrap">
-        <span class="hidden sm:inline">30-sec version</span><span class="sm:hidden">TL;DR</span>
-      </button>
+      <button type="button" data-tldr-open aria-label="TL;DR – the 30-second version" title="The 30-second version" class="tldr-btn rounded-full border px-3 py-1.5 text-xs font-medium whitespace-nowrap">TL;DR</button>
       <div class="flex items-center gap-1.5" role="group" aria-label="Colour theme">
         {themes.map((t) => (
           <button
