@@ -2,6 +2,6 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://verazoll.github.io',
+  site: 'https://verazoll.com',
   vite: { plugins: [tailwindcss()] },
 });
