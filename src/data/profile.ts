@@ -65,7 +65,7 @@ export const experience = [
       { name: 'Aftersales Business Development', detail: 'Developed a "Used Car Check" concept to generate additional revenue, based on a Business Model Canvas; monthly revenue reporting' },
       { name: 'Panamera Development', detail: 'Prototype and vehicle testing' },
       { name: 'Procurement Metal', detail: 'Award proposals, sourcing strategies and supplier visits' },
-      { name: 'Sales Smart Mobility', detail: 'Digital Ecosystem' },
+      { name: 'Sales Smart Mobility', detail: 'Digital ecosystem: Porsche online shop and online car sales' },
     ],
     tags: ['Controlling', 'VBA', 'Engineering'],
   },
