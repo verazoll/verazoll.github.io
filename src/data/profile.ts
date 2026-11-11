@@ -64,7 +64,7 @@ export const experience = [
       { name: 'Controlling Sales', detail: 'Excel/VBA monthly reports, internal cost calculation tool, mid-year budgeting and forecasting' },
       { name: 'Aftersales Business Development', detail: 'Developed a "Used Car Check" concept to generate additional revenue, based on a Business Model Canvas; monthly revenue reporting' },
       { name: 'Panamera Development', detail: 'Prototype and vehicle testing' },
-      { name: 'Procurement Metal', detail: '' }, // TODO: add a one-liner
+      { name: 'Procurement Metal', detail: 'Award proposals, sourcing strategies and supplier visits' },
       { name: 'Sales Smart Mobility', detail: 'Digital Ecosystem' },
     ],
     tags: ['Controlling', 'VBA', 'Engineering'],
