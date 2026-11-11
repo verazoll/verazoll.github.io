@@ -14,6 +14,7 @@ import { existsSync } from 'node:fs';
 // Images are picked up automatically once the files exist in public/images/.
 const img = (file: string) => (existsSync(`public/images/${file}`) ? `/images/${file}` : '');
 const portrait = img('portrait.jpg');
+const cvFile = existsSync('public/Vera_Zoll_CV.pdf') ? '/Vera_Zoll_CV.pdf' : '';
 const porscheBanner = img('porsche-surf.jpg');
 const headlineParts = profile.headline.split(' | ');
 ---
@@ -46,6 +47,12 @@ const headlineParts = profile.headline.split(' | ');
         <p class="mt-6 max-w-xl leading-relaxed" style="color: var(--muted)">{profile.intro}</p>
         <div class="mt-9 flex flex-wrap items-center gap-5">
           <a href="#projects" class="rounded-full px-6 py-3 text-sm font-medium transition hover:opacity-90" style="background: var(--accent); color: var(--bg)">See my projects</a>
+          {cvFile && (
+            <a href={cvFile} download class="cv-btn inline-flex items-center gap-2 rounded-full border px-5 py-3 text-sm font-medium">
+              <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-4.5-4.5M12 15l4.5-4.5M4 19h16" /></svg>
+              Download CV
+            </a>
+          )}
           <SocialIcons />
         </div>
         <dl class="relative isolate mt-14 grid max-w-md grid-cols-3 gap-6">
@@ -279,6 +286,9 @@ const headlineParts = profile.headline.split(' | ');
             <a href={profile.links.linkedin} target="_blank" rel="noopener" class="rounded-full px-6 py-3 text-sm font-medium" style="background: var(--accent); color: var(--bg)">LinkedIn</a>
           )}
           <a href={profile.links.github} target="_blank" rel="noopener" class="rounded-full border px-6 py-3 text-sm font-medium transition hover:bg-white/5" style="border-color: var(--line)">GitHub</a>
+          {cvFile && (
+            <a href={cvFile} download class="rounded-full border px-6 py-3 text-sm font-medium transition hover:bg-white/5" style="border-color: var(--line)">Download CV</a>
+          )}
         </div>
       </div>
     </section>

@@ -198,3 +198,16 @@ body {
   transform: rotate(0deg) scale(1.06);
   box-shadow: 0 16px 32px -14px var(--glow);
 }
+
+/* Download CV button in the hero */
+.cv-btn {
+  border-color: var(--line);
+  transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+.cv-btn:hover,
+.cv-btn:focus-visible {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  outline: none;
+}
