@@ -32,6 +32,8 @@ const { title, description } = Astro.props;
         const t = localStorage.getItem('theme');
         if (t) document.documentElement.dataset.theme = t;
       } catch {}
+      // ?og-shot: layout used by the deploy workflow to screenshot the link preview image.
+      if (location.search.includes('og-shot')) document.documentElement.classList.add('og-shot');
     </script>
   </head>
   <body class="min-h-screen overflow-x-hidden">
