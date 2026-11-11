@@ -3,7 +3,7 @@
 export const profile = {
   name: 'Vera Zoll',
   headline:
-    'MSc Business Analytics @ NOVA SBE | Ex-Porsche APAC & Water-Tech Startup | Curious about ML & GenAI, driven by dreams (and data)',
+    'MSc Business Analytics @ NOVA SBE | Ex-Porsche AG & Water-Tech Startup | Curious about ML & GenAI, driven by dreams (and data)',
   location: 'Lisbon, Portugal',
   traits: ['Results-driven', 'Analytical', 'Hands-on', 'Ambitious', 'Communicative'],
   motto: 'Passionate about whatever drives me.',
