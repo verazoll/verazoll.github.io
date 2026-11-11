@@ -23,6 +23,15 @@ export const profile = {
   },
 };
 
+// "30-second version" for recruiters: the five things to know at a glance.
+export const tldr = [
+  { label: 'Now', text: 'MSc Business Analytics at NOVA SBE, Lisbon (2026 – 2027).' },
+  { label: 'Experience', text: '8 years at Porsche AG – from dual student to regional CRM, sales & marketing for Asia Pacific and Australia, across 9 international markets.' },
+  { label: 'Skills', text: 'Python, machine learning, Excel/VBA, CRM and sales funnel management, stakeholder communication – in 5 languages.' },
+  { label: 'Looking for', text: 'Analytical roles and AI projects where data turns into business decisions.' },
+  { label: 'Contact', text: '' }, // rendered as e-mail and LinkedIn links
+];
+
 export const experience = [
   {
     role: 'Regional CRM, Sales & Marketing',

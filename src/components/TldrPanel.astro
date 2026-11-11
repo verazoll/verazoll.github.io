@@ -1,0 +1,65 @@
+---
+// "30-second version": a dialog with the five key facts for recruiters.
+// Opened by any element with [data-tldr-open].
+import { profile, tldr } from '../data/profile';
+---
+<dialog id="tldr" class="tldr m-auto w-[min(36rem,calc(100%-2rem))] rounded-3xl border p-0" aria-labelledby="tldr-title">
+  <div class="relative p-6 sm:p-9">
+    <button type="button" data-tldr-close class="absolute top-4 right-4 grid size-9 place-items-center rounded-full transition hover:bg-white/5" aria-label="Close">
+      <svg viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
+    </button>
+    <p class="eyebrow text-[0.7rem]">The 30-second version</p>
+    <h2 id="tldr-title" class="mt-2 font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight sm:text-3xl">{profile.name} in five points</h2>
+    <ol class="mt-6 space-y-4">
+      {tldr.map((t, i) => (
+        <li class="tldr-item grid grid-cols-[2rem_1fr] gap-3" style={`--i:${i}`}>
+          <span class="font-[family-name:var(--font-display)] text-sm font-semibold tabular-nums" style="color: var(--accent)">0{i + 1}</span>
+          <div>
+            <p class="text-xs font-medium tracking-wide uppercase" style="color: var(--muted)">{t.label}</p>
+            {t.text ? (
+              <p class="mt-1 text-[0.95rem] leading-relaxed">{t.text}</p>
+            ) : (
+              <p class="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-[0.95rem]">
+                <a href={`mailto:${profile.email}`} style="color: var(--accent)">{profile.email}</a>
+                <a href={profile.links.linkedin} target="_blank" rel="noopener" style="color: var(--accent)">LinkedIn ↗</a>
+              </p>
+            )}
+          </div>
+        </li>
+      ))}
+    </ol>
+    <button type="button" data-tldr-close class="mt-8 w-full rounded-full border px-6 py-3 text-sm font-medium transition hover:bg-white/5" style="border-color: var(--line)">
+      Show me the full story
+    </button>
+  </div>
+</dialog>
+
+<script>
+  const dlg = document.getElementById('tldr') as HTMLDialogElement | null;
+  if (dlg) {
+    document.querySelectorAll('[data-tldr-open]').forEach((b) => b.addEventListener('click', () => dlg.showModal()));
+    dlg.querySelectorAll('[data-tldr-close]').forEach((b) => b.addEventListener('click', () => dlg.close()));
+    // click on the backdrop closes it
+    dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+  }
+</script>
+
+<style>
+  .tldr {
+    background: var(--bg);
+    color: var(--text);
+    border-color: var(--line);
+    box-shadow: 0 30px 80px -20px var(--glow);
+  }
+  .tldr::backdrop {
+    background: rgb(0 0 0 / 0.6);
+    backdrop-filter: blur(6px);
+  }
+  .tldr[open] { animation: tldr-in 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
+  .tldr[open] .tldr-item { animation: tldr-item 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: calc(0.08s + var(--i) * 0.06s); }
+  @keyframes tldr-in { from { opacity: 0; transform: translateY(12px) scale(0.98); } }
+  @keyframes tldr-item { from { opacity: 0; transform: translateY(6px); } }
+  @media (prefers-reduced-motion: reduce) {
+    .tldr[open], .tldr[open] .tldr-item { animation: none; }
+  }
+</style>
