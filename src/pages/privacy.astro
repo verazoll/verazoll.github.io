@@ -1,0 +1,59 @@
+---
+import LegalPage from '../components/LegalPage.astro';
+import { profile } from '../data/profile';
+---
+<LegalPage title="Privacy Policy">
+  <h2>Controller</h2>
+  <p>{profile.name} · E-mail: <a href={`mailto:${profile.email}`}>{profile.email}</a></p>
+
+  <h2>In short</h2>
+  <p>
+    This is a personal website. It uses no cookies, no contact forms and no advertising or social-media tracking.
+    Only the minimum data needed to deliver the site and to count visits anonymously is processed.
+  </p>
+
+  <h2>Hosting (GitHub Pages)</h2>
+  <p>
+    This website is hosted by GitHub Pages, a service of GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco,
+    CA 94107, USA. When you visit the site, GitHub processes technical data such as your IP address, the requested page,
+    date and time, and browser information in server logs in order to deliver the site and keep it secure.
+    Legal basis: Art. 6(1)(f) GDPR (legitimate interest in a secure and reliable website). GitHub is certified under the
+    EU-U.S. Data Privacy Framework. More information:
+    <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub Privacy Statement</a>.
+  </p>
+
+  <h2>Visitor statistics (Cloudflare Web Analytics)</h2>
+  <p>
+    To understand how many people visit this site and from which countries, I use Cloudflare Web Analytics, a service of
+    Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA. It does not set cookies, does not use
+    local storage and does not create individual user profiles. It records aggregated data such as page views, referring
+    website, country, device type and browser. Legal basis: Art. 6(1)(f) GDPR (legitimate interest in anonymous reach
+    statistics). Cloudflare is certified under the EU-U.S. Data Privacy Framework. More information:
+    <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare Privacy Policy</a>.
+  </p>
+
+  <h2>Fonts</h2>
+  <p>All fonts are served from this website itself. No connection to Google Fonts or other font services is made.</p>
+
+  <h2>External links</h2>
+  <p>
+    Links to LinkedIn, GitHub and other sites only transfer data to those providers once you click them.
+    Their own privacy policies then apply.
+  </p>
+
+  <h2>E-mail contact</h2>
+  <p>If you e-mail me, I use your details only to reply and do not share them.</p>
+
+  <h2>Your rights</h2>
+  <p>Under the GDPR you have the right to:</p>
+  <ul>
+    <li>access the personal data stored about you (Art. 15),</li>
+    <li>rectification or erasure (Art. 16, 17),</li>
+    <li>restriction of processing (Art. 18) and data portability (Art. 20),</li>
+    <li>object to processing based on legitimate interest (Art. 21),</li>
+    <li>lodge a complaint with a data protection supervisory authority (Art. 77).</li>
+  </ul>
+  <p>To exercise these rights, just send me an e-mail.</p>
+
+  <p class="mt-10 text-xs">Last updated: November 2026</p>
+</LegalPage>

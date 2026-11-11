@@ -15,6 +15,8 @@ export const profile = {
     { value: '9', label: 'international markets' },
     { value: '5', label: 'languages' },
   ],
+  // Shown on the imprint and privacy pages.
+  email: 'hello@verazoll.com',
   links: {
     linkedin: 'https://www.linkedin.com/in/vera-zoll-34b5731a5',
     github: 'https://github.com/verazoll',
