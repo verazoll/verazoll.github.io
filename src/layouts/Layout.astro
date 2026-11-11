@@ -23,6 +23,8 @@ const { title, description } = Astro.props;
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Preview of Vera Zoll's personal website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <!-- Cloudflare Web Analytics: cookie-free visitor stats. The token is a public site ID, not a secret. -->
+    <script is:inline type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "b05ad7b268af43938f0c376004dbac33"}'></script>
     <script is:inline>
       // Apply saved theme before paint to avoid a flash.
       try {
