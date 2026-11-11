@@ -1,0 +1,25 @@
+---
+// Easter egg for people who open the browser console.
+import { profile } from '../data/profile';
+---
+<script is:inline define:vars={{ email: profile.email, linkedin: profile.links.linkedin }}>
+  (() => {
+    const vera = {
+      status: () => 'Open to analytics roles and AI projects. Currently: MSc Business Analytics @ NOVA SBE, Lisbon.',
+      contact: () => `${email} · ${linkedin}`,
+      surf: () => '🏄‍♀️ Probably checking the forecast for Carcavelos right now.',
+      stack: () => 'Astro, Tailwind CSS, d3-geo, canvas. Hosted on GitHub Pages.',
+    };
+    Object.defineProperty(window, 'vera', { value: vera });
+    console.log(
+      '%cHi, curious one 👋',
+      'font: 600 20px system-ui, sans-serif; color: #5eead4; padding: 4px 0;',
+    );
+    console.log(
+      "%cYou're looking under the hood – I like that.\n" +
+        'Looking for someone who turns data into decisions?\n\n' +
+        'Try:  vera.status()   vera.contact()   vera.stack()   vera.surf()',
+      'font: 13px/1.6 ui-monospace, monospace; color: #8a99b8;',
+    );
+  })();
+</script>
