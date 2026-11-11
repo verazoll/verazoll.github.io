@@ -5,6 +5,7 @@ import MarketsMap from '../components/MarketsMap.astro';
 import HobbyOrbit from '../components/HobbyOrbit.astro';
 import DataFlow from '../components/DataFlow.astro';
 import WaveDivider from '../components/WaveDivider.astro';
+import SocialIcons from '../components/SocialIcons.astro';
 import { profile, experience, education, projects, skills, surfClub, workGallery } from '../data/profile';
 
 import { existsSync } from 'node:fs';
@@ -41,9 +42,9 @@ const headlineParts = profile.headline.split(' | ');
           ))}
         </p>
         <p class="mt-6 max-w-xl leading-relaxed" style="color: var(--muted)">{profile.intro}</p>
-        <div class="mt-9 flex flex-wrap gap-3">
+        <div class="mt-9 flex flex-wrap items-center gap-5">
           <a href="#projects" class="rounded-full px-6 py-3 text-sm font-medium transition hover:opacity-90" style="background: var(--accent); color: var(--bg)">See my projects</a>
-          <a href={profile.links.linkedin} target="_blank" rel="noopener" class="rounded-full border px-6 py-3 text-sm font-medium transition hover:bg-white/5" style="border-color: var(--line)">LinkedIn ↗</a>
+          <SocialIcons />
         </div>
         <dl class="relative isolate mt-14 grid max-w-md grid-cols-3 gap-6">
           <MarketsMap class="absolute top-1/2 left-1/2 -z-10 w-[22rem] max-w-none -translate-x-1/2 -translate-y-1/2 sm:w-[28rem]" />
