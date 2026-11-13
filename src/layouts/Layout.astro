@@ -24,8 +24,37 @@ const { title, description } = Astro.props;
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Preview of Vera Zoll's personal website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <!-- Cloudflare Web Analytics: cookie-free visitor stats. The token is a public site ID, not a secret. -->
-    <script is:inline type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "b05ad7b268af43938f0c376004dbac33"}'></script>
+    <!-- Cloudflare Web Analytics: cookie-free visitor stats. The token is a public site ID, not a secret.
+         Owner opt-out: open the site once per browser with ?notrack (undo with ?track).
+         Only loaded on the live domain, so local dev and preview builds are never counted. -->
+    <script is:inline>
+      (() => {
+        const KEY = 'analytics-optout';
+        const params = new URLSearchParams(location.search);
+        let optedOut = false;
+        try {
+          if (params.has('notrack')) localStorage.setItem(KEY, '1');
+          if (params.has('track')) localStorage.removeItem(KEY);
+          optedOut = localStorage.getItem(KEY) === '1';
+        } catch {}
+        if (params.has('notrack') || params.has('track')) {
+          params.delete('notrack');
+          params.delete('track');
+          const q = params.toString();
+          history.replaceState(null, '', location.pathname + (q ? '?' + q : '') + location.hash);
+          addEventListener('load', () => alert(optedOut
+            ? 'Analytics off: visits from this browser are no longer counted.'
+            : 'Analytics on: visits from this browser are counted again.'));
+        }
+        const live = location.hostname === 'verazoll.com' || location.hostname === 'www.verazoll.com';
+        if (optedOut || !live || location.search.includes('og-shot')) return;
+        const s = document.createElement('script');
+        s.defer = true;
+        s.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+        s.dataset.cfBeacon = '{"token": "b05ad7b268af43938f0c376004dbac33"}';
+        document.head.appendChild(s);
+      })();
+    </script>
     <script is:inline>
       // Apply saved theme before paint to avoid a flash.
       try {
