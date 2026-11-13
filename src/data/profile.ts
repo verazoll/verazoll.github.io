@@ -166,14 +166,15 @@ export const surfClub = {
   ],
 };
 
-// Newest first, like the CV (order based on photo dates where available)
+// Newest first, like the CV (order based on photo dates where available);
+// the farewell photo sits next to the APAC welcome photo on purpose.
 export const workGallery = [
-  { src: '/images/work/farewell.jpg', caption: 'Farewell at Porsche Asia Pacific – in “Bangkok traffic” work mode' },
   { src: '/images/work/workshop-screen.jpg', caption: 'Presenting the sales funnel score in Singapore', pos: '15% center' },
   { src: '/images/work/deep-dive.jpg', caption: 'Presenting a deep-dive analysis at Porsche Thailand' },
   { src: '/images/work/team.jpg', caption: 'Sales funnel management workshop with dealers in Bangkok' },
   { src: '/images/work/sales-funnel.jpg', caption: 'Strategic council with market CEOs and sales leadership from Porsche AG in Weissach' },
   { src: '/images/work/colleagues.jpg', caption: 'With colleagues at the office in Singapore' },
+  { src: '/images/work/farewell.jpg', caption: 'Farewell at the Porsche Asia Pacific office' },
   { src: '/images/work/welcome-apac.jpg', caption: 'At the Porsche Asia Pacific office', pos: 'center 0%' },
   { src: '/images/work/presenting-room.jpg', caption: 'Sales funnel training for dealer sales, marketing and CRM teams in Melbourne', pos: '0% center' },
   { src: '/images/work/market-visit.jpg', caption: 'After the dealer trainings at the Porsche training centre in Melbourne' },
