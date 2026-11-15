@@ -3,7 +3,7 @@
 export const profile = {
   name: 'Vera Zoll',
   headline:
-    'MSc Business Analytics @ NOVA SBE | Ex-Porsche AG & Water-Tech Startup | Curious about ML & GenAI, driven by dreams (and data)',
+    'MSc Business Analytics @ NOVA SBE | Porsche AG & Ex-Water-Tech Startup | Curious about ML & agentic AI, driven by dreams (and data)',
   location: 'Lisbon, Portugal',
   traits: ['Results-driven', 'Analytical', 'Hands-on', 'Ambitious', 'Communicative'],
   motto: 'Passionate about whatever drives me.',
@@ -36,7 +36,8 @@ export const experience = [
   {
     role: 'Regional CRM, Sales & Marketing',
     org: 'Porsche Asia Pacific & Porsche Cars Australia',
-    period: '02/2024 – 08/2026',
+    period: '02/2024 – present',
+    status: 'On leave for MSc',
     points: [
       'Managed CRM and marketing projects for the Regional Office in Singapore and the importer Porsche Cars Australia.',
       'Developed the "Sales Funnel Management Excellence" (SAFE) concept for the Overseas & Emerging Markets region – from shaping the strategic framework and reporting, to building a market enablement hub, to dealer trainings across the globe.',
