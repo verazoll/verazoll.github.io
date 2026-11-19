@@ -111,6 +111,14 @@ export const education = [
   { title: 'Abitur (High School Diploma)', org: 'Kreisgymnasium Riedlingen', period: '2017', note: 'Grade 1.0', focus: ['Physics focus', 'Advanced Maths +2 h/week'] },
 ];
 
+// Current club role, shown as a wide card above the projects.
+export const aiClub = {
+  name: 'Nova AI Club',
+  kind: 'Project Executive · since 10/2026',
+  text: 'Developing applications and automation solutions for customers and enhancing our CRM dashboard.',
+  tags: ['AI Applications', 'Automation', 'CRM Dashboard'],
+};
+
 export const projects = [
   {
     name: 'Surfletics',

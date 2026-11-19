@@ -215,3 +215,8 @@ body {
 /* Link preview screenshot mode (see scripts/og-preview.sh): no nav, hero starts at the top. */
 .og-shot header { display: none; }
 .og-shot .hero { min-height: 0; padding-top: 2.75rem; }
+
+/* Porsche crest on top of the experience timeline line */
+.exp-crest {
+  filter: drop-shadow(0 0 14px var(--glow));
+}
